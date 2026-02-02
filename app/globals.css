@@ -39,6 +39,14 @@
   --sidebar-ring: #FFCC00;
 }
 
+body {
+  background-image: url('/images/fondo.jpeg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .dark {
   --background: #0B0B0B;
   --foreground: #FFFFFF;

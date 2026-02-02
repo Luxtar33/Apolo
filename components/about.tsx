@@ -9,7 +9,7 @@ const stats = [
 
 export function About() {
   return (
-    <section id="nosotros" className="py-20 bg-card">
+    <section id="nosotros" className="py-20 bg-transparent">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>

@@ -33,17 +33,8 @@ export function Hero() {
     <section className="relative">
       {/* Main Hero */}
       <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/asphalt-bg.jpg"
-            alt="Background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0B]/90 via-[#0B0B0B]/70 to-transparent" />
-        </div>
+        {/* Background removed to show global fondo.jpeg */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0B]/90 via-[#0B0B0B]/70 to-transparent" />
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-8 items-center">

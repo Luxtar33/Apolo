@@ -50,7 +50,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contacto" className="py-20 bg-card">
+    <section id="contacto" className="py-20 bg-transparent">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="text-center mb-12">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">Contacto</span>

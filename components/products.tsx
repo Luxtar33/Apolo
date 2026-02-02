@@ -321,7 +321,7 @@ export function Products() {
   }
 
   return (
-    <section className="py-12 bg-background min-h-screen">
+    <section className="py-12 bg-transparent min-h-screen">
       <div className="container mx-auto px-4">
         {/* Search bar */}
         <div className="max-w-2xl mx-auto mb-8">
