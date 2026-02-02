@@ -242,9 +242,55 @@ export function Products() {
 
     if (viewMode === "list") {
       return (
-        <div className="bg-card border border-[#2F2F2F] rounded-lg p-4 hover:border-[#C21A1A]/50 transition-colors">
-          <div className="flex gap-4">
-            <div className="relative w-24 h-24 flex-shrink-0 bg-white rounded">
+        <Link href={`/productos/${product.id}`} className="block">
+          <div className="bg-card border border-[#2F2F2F] rounded-lg p-4 hover:border-[#C21A1A]/50 transition-colors">
+            <div className="flex gap-4">
+              <div className="relative w-24 h-24 flex-shrink-0 bg-white rounded">
+                <Image
+                  src={product.image || "/placeholder.svg"}
+                  alt={product.name}
+                  fill
+                  className="object-contain p-2"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between gap-2 flex-wrap">
+                  <span className="text-xs px-2 py-1 bg-[#8B7355] text-white font-medium">
+                    {subcategory?.name.toUpperCase()}
+                  </span>
+                </div>
+                <h4 className="font-bold text-foreground mt-2">
+                  APOLO <span className="text-[#C21A1A]">{product.line}</span>
+                </h4>
+                <p className="text-xl font-bold text-foreground">
+                  {product.viscosity || product.name.split(' ').slice(1).join(' ')}
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  PRODUCTO: {product.code}
+                </p>
+                <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
+                  {product.description}
+                </p>
+                <span className="text-[#C21A1A] hover:underline text-sm mt-2 font-medium inline-block">
+                  Ver detalles →
+                </span>
+              </div>
+            </div>
+          </div>
+        </Link>
+      )
+    }
+
+    return (
+      <Link href={`/productos/${product.id}`} className="block">
+        <div className="bg-card border border-[#2F2F2F] rounded-lg overflow-hidden hover:border-[#C21A1A]/50 transition-colors group">
+          <div className="border-t-4 border-[#8B7355]" />
+          <div className="p-4">
+            <span className="inline-block text-xs px-2 py-1 bg-[#8B7355] text-white font-medium mb-3">
+              {subcategory?.name.toUpperCase()}
+            </span>
+            
+            <div className="relative w-full h-32 bg-white rounded mb-4">
               <Image
                 src={product.image || "/placeholder.svg"}
                 alt={product.name}
@@ -252,67 +298,25 @@ export function Products() {
                 className="object-contain p-2"
               />
             </div>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-start justify-between gap-2 flex-wrap">
-                <span className="text-xs px-2 py-1 bg-[#8B7355] text-white font-medium">
-                  {subcategory?.name.toUpperCase()}
-                </span>
-              </div>
-              <h4 className="font-bold text-foreground mt-2">
-                APOLO <span className="text-[#C21A1A]">{product.line}</span>
-              </h4>
-              <p className="text-xl font-bold text-foreground">
-                {product.viscosity || product.name.split(' ').slice(1).join(' ')}
-              </p>
-              <p className="text-sm text-muted-foreground mt-1">
-                PRODUCTO: {product.code}
-              </p>
-              <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
-                {product.description}
-              </p>
-              <button className="text-[#C21A1A] hover:underline text-sm mt-2 font-medium">
-                Ver
-              </button>
-            </div>
+
+            <h4 className="font-bold text-foreground">
+              APOLO <span className="text-[#C21A1A]">{product.line}</span>
+            </h4>
+            <p className="text-lg font-bold text-foreground">
+              {product.viscosity || product.name.split(' ').slice(1).join(' ')}
+            </p>
+            <p className="text-sm text-muted-foreground mt-1">
+              PRODUCTO: {product.code}
+            </p>
+            <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
+              {product.description}
+            </p>
+            <span className="text-[#C21A1A] hover:underline text-sm mt-3 font-medium inline-block">
+              Ver detalles →
+            </span>
           </div>
         </div>
-      )
-    }
-
-    return (
-      <div className="bg-card border border-[#2F2F2F] rounded-lg overflow-hidden hover:border-[#C21A1A]/50 transition-colors group">
-        <div className="border-t-4 border-[#8B7355]" />
-        <div className="p-4">
-          <span className="inline-block text-xs px-2 py-1 bg-[#8B7355] text-white font-medium mb-3">
-            {subcategory?.name.toUpperCase()}
-          </span>
-          
-          <div className="relative w-full h-32 bg-white rounded mb-4">
-            <Image
-              src={product.image || "/placeholder.svg"}
-              alt={product.name}
-              fill
-              className="object-contain p-2"
-            />
-          </div>
-
-          <h4 className="font-bold text-foreground">
-            APOLO <span className="text-[#C21A1A]">{product.line}</span>
-          </h4>
-          <p className="text-lg font-bold text-foreground">
-            {product.viscosity || product.name.split(' ').slice(1).join(' ')}
-          </p>
-          <p className="text-sm text-muted-foreground mt-1">
-            PRODUCTO: {product.code}
-          </p>
-          <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
-            {product.description}
-          </p>
-          <button className="text-[#C21A1A] hover:underline text-sm mt-3 font-medium">
-            Ver
-          </button>
-        </div>
-      </div>
+      </Link>
     )
   }
 

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X, Search, ChevronDown } from "lucide-react"
@@ -15,8 +15,25 @@ export function Header() {
   const [activeCategory, setActiveCategory] = useState(categories[0])
   const [mobileProductsOpen, setMobileProductsOpen] = useState(false)
   const [mobileActiveCategory, setMobileActiveCategory] = useState<string | null>(null)
+  const megaMenuRef = useRef<HTMLDivElement>(null)
 
   const isActive = (path: string) => pathname === path
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (megaMenuRef.current && !megaMenuRef.current.contains(event.target as Node)) {
+        setShowMegaMenu(false)
+      }
+    }
+
+    if (showMegaMenu) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showMegaMenu])
 
   return (
     <header className="sticky top-0 z-50 w-full">
@@ -58,18 +75,14 @@ export function Header() {
             >
               NOSOTROS
             </Link>
-            <div 
-              className="relative"
-              onMouseEnter={() => setShowMegaMenu(true)}
-              onMouseLeave={() => setShowMegaMenu(false)}
-            >
-              <Link 
-                href="/productos"
+            <div className="relative">
+              <button 
+                onClick={() => setShowMegaMenu(!showMegaMenu)}
                 className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-white ${isActive('/productos') ? 'text-white' : 'text-white/70'}`}
               >
                 PRODUCTOS
                 <ChevronDown className={`h-4 w-4 transition-transform ${showMegaMenu ? 'rotate-180' : ''}`} />
-              </Link>
+              </button>
             </div>
             <Link
               href="/contacto"
@@ -190,9 +203,8 @@ export function Header() {
       {/* Mega Menu - Desktop */}
       {showMegaMenu && (
         <div 
+          ref={megaMenuRef}
           className="absolute left-0 right-0 bg-white shadow-xl z-50 hidden lg:block"
-          onMouseEnter={() => setShowMegaMenu(true)}
-          onMouseLeave={() => setShowMegaMenu(false)}
         >
           <div className="container mx-auto">
             <div className="flex">

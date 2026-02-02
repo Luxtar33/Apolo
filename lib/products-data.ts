@@ -9,6 +9,8 @@ export type Product = {
   image: string
   categoryId: string
   subcategoryId: string
+  tdsUrl?: string
+  msdsUrl?: string
 }
 
 export type Subcategory = {
@@ -94,8 +96,8 @@ export const categories: Category[] = [
 
 export const products: Product[] = [
   // AUTOMÓVIL - Aceites de motor
-  { id: "1", name: "Apolo Synthetic", line: "PRO LINE", code: "APL-001", viscosity: "5W-30", type: "Sintético", description: "Aceite sintético de alto rendimiento con excelente protección contra el desgaste y ahorro de combustible.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
-  { id: "2", name: "Apolo Premium", line: "PREMIUM", code: "APL-002", viscosity: "10W-40", type: "Semi-sintético", description: "Aceite semi-sintético con tecnología avanzada para motores modernos.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
+  { id: "1", name: "Apolo Synthetic", line: "PRO LINE", code: "APL-001", viscosity: "5W-30", type: "Sintético", description: "Aceite sintético de alto rendimiento con excelente protección contra el desgaste y ahorro de combustible.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto", tdsUrl: "/docs/tds/apolo-synthetic.pdf", msdsUrl: "/docs/msds/apolo-synthetic.pdf" },
+  { id: "2", name: "Apolo Premium", line: "PREMIUM", code: "APL-002", viscosity: "10W-40", type: "Semi-sintético", description: "Aceite semi-sintético con tecnología avanzada para motores modernos.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto", tdsUrl: "/docs/tds/apolo-premium.pdf", msdsUrl: "/docs/msds/apolo-premium.pdf" },
   { id: "3", name: "Apolo Económico", line: "CLASSIC", code: "APL-003", viscosity: "20W-50", type: "Mineral", description: "Aceite mineral de calidad para motores con alto kilometraje.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
   { id: "4", name: "Apolo Full Synthetic", line: "PRO LINE", code: "APL-004", viscosity: "0W-20", type: "Sintético", description: "Aceite 100% sintético para máxima eficiencia de combustible.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
   { id: "5", name: "Apolo High Mileage", line: "PREMIUM", code: "APL-005", viscosity: "10W-30", type: "Semi-sintético", description: "Formulado especialmente para vehículos con más de 100,000 km.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
