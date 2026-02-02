@@ -33,45 +33,16 @@ export function Hero() {
     <section className="relative">
       {/* Main Hero */}
       <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center overflow-hidden">
-        {/* Background removed to show global fondo.jpeg */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B0B0B]/90 via-[#0B0B0B]/70 to-transparent" />
-
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
-            {/* Text Content */}
-            <div className="flex flex-col gap-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold italic text-white leading-tight">
-                LIBERA TODO TU POTENCIAL
-              </h1>
-              
-              <div className="w-16 h-1 bg-[#C21A1A]" />
-              
-              <Link 
-                href="/productos"
-                className="inline-flex items-center gap-2 text-white hover:text-[#C21A1A] transition-colors group w-fit"
-              >
-                <span className="text-sm md:text-base font-medium tracking-wide">
-                  DESCUBRA NUESTRAS INNOVADORAS GAMAS
-                </span>
-                <div className="w-6 h-6 rounded-full bg-[#C21A1A] flex items-center justify-center group-hover:bg-white transition-colors">
-                  <ChevronRight className="h-4 w-4 text-white group-hover:text-[#C21A1A]" />
-                </div>
-              </Link>
-            </div>
-
-            {/* Product Image */}
-            <div className="relative hidden lg:flex justify-center items-center">
-              <div className="relative w-[350px] h-[450px]">
-                <Image
-                  src="/images/oil-bottle-hero.jpg"
-                  alt="Aceite Apolo Premium"
-                  fill
-                  className="object-contain drop-shadow-2xl"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
+        {/* Background Video */}
+        <div className="absolute inset-0">
+          <video
+            src="/video/videoinicio.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="object-cover w-full h-full"
+          />
         </div>
       </div>
 
