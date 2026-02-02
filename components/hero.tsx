@@ -35,15 +35,28 @@ export function Hero() {
       <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center overflow-hidden">
         {/* Background Video */}
         <div className="absolute inset-0">
-          <video
-            src="/video/videoinicio.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="object-cover w-full h-full"
-          />
-        </div>
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="object-cover w-full h-full"
+  >
+    {/* Desktop */}
+    <source
+      src="/video/videoinicio.mp4"
+      media="(min-width: 768px)"
+      type="video/mp4"
+    />
+
+    {/* Mobile */}
+    <source
+      src="/video/videoinicio3.mp4"
+      media="(max-width: 767px)"
+      type="video/mp4"
+    />
+  </video>
+</div>
       </div>
 
       {/* "Encuentra el lubricante" Banner */}
@@ -51,15 +64,15 @@ export function Hero() {
         <div className="absolute right-0 top-0 bottom-0 w-1/3 opacity-10">
           <svg viewBox="0 0 100 100" className="h-full w-full">
             <pattern id="hexagons" width="10" height="10" patternUnits="userSpaceOnUse">
-              <polygon points="5,0 10,2.5 10,7.5 5,10 0,7.5 0,2.5" fill="none" stroke="#1C1C1C" strokeWidth="0.5"/>
+                    <polygon points="5,0 10,2.5 10,7.5 5,10 0,7.5 0,2.5" fill="none" stroke="#151515" strokeWidth="0.5"/>
             </pattern>
             <rect width="100" height="100" fill="url(#hexagons)"/>
           </svg>
         </div>
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="flex items-center justify-center gap-4">
-            <div className="w-12 h-1 bg-[#C21A1A] hidden sm:block" />
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold italic text-[#1C1C1C] text-center">
+            <div className="w-12 h-1 bg-primary hidden sm:block" />
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold italic text-card-foreground text-center">
               ENCUENTRA EL LUBRICANTE ADECUADO PARA TU VEHICULO
             </h2>
           </div>
@@ -75,11 +88,11 @@ export function Hero() {
             className="group relative h-[200px] md:h-[250px] overflow-hidden"
           >
             {/* Background Pattern */}
-            <div className="absolute inset-0 bg-[#2F2F2F]">
+            <div className="absolute inset-0 bg-secondary">
               <div className="absolute inset-0 opacity-20">
                 <svg viewBox="0 0 100 100" className="h-full w-full" preserveAspectRatio="none">
                   <pattern id={`hexagons-${index}`} width="8" height="8" patternUnits="userSpaceOnUse">
-                    <polygon points="4,0 8,2 8,6 4,8 0,6 0,2" fill="none" stroke="#0B0B0B" strokeWidth="0.3"/>
+                    <polygon points="4,0 8,2 8,6 4,8 0,6 0,2" fill="none" stroke="#0E0E0E" strokeWidth="0.3"/>
                   </pattern>
                   <rect width="100" height="100" fill={`url(#hexagons-${index})`}/>
                 </svg>
@@ -101,7 +114,7 @@ export function Hero() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#2F2F2F]/50" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-secondary/50" />
             </div>
 
             {/* Content */}
@@ -113,13 +126,13 @@ export function Hero() {
               }`}
             >
               <div className={`flex items-center gap-3 ${category.position === "left" ? "flex-row-reverse" : ""}`}>
-                <div className="w-8 h-1 bg-[#C21A1A]" />
+                <div className="w-8 h-1 bg-primary" />
                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-wide">
                   {category.title}
                 </h3>
               </div>
               <div 
-                className={`mt-4 flex items-center gap-2 text-[#C21A1A] group-hover:gap-3 transition-all ${
+                className={`mt-4 flex items-center gap-2 text-primary group-hover:gap-3 transition-all ${
                   category.position === "left" ? "flex-row-reverse" : ""
                 }`}
               >

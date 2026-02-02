@@ -8,6 +8,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { categories } from "@/lib/products-data";
+import { SheetTitle } from "@/components/ui/sheet";
 
 export function Header() {
   const pathname = usePathname();
@@ -44,18 +45,18 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* Top bar */}
-      <div className="bg-[#1C1C1C] border-b border-[#2F2F2F]">
+      <div className="bg-sidebar border-b border-sidebar-border">
         <div className="container mx-auto flex items-center justify-end gap-4 px-4 py-2">
           <Link
             href="/productos"
-            className="hidden sm:flex items-center gap-2 text-sm text-foreground hover:text-[#FFCC00] transition-colors"
+            className="hidden sm:flex items-center gap-2 text-sm text-foreground hover:text-accent transition-colors"
           >
             <Search className="h-4 w-4" />
           </Link>
           <Link href="/productos">
             <Button
               size="sm"
-              className="rounded-full bg-[#FFCC00] text-[#0B0B0B] hover:bg-[#FFCC00]/90 font-semibold text-xs px-4"
+              className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-xs px-4"
             >
               ENCUENTRA TU LUBRICANTE
             </Button>
@@ -64,7 +65,7 @@ export function Header() {
       </div>
 
       {/* Main navigation */}
-      <div className="bg-[#C21A1A]">
+      <div className="bg-primary">
         <div className="container mx-auto flex h-14 items-center justify-between px-4 lg:px-8">
           <Link href="/" className="flex items-center gap-2">
             <div className=" px-2 py-1 h-10 flex items-center">
@@ -124,11 +125,12 @@ export function Header() {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-full sm:w-[320px] bg-[#1C1C1C] border-[#2F2F2F] p-0"
+              className="w-full sm:w-[320px] bg-muted border-border p-0"
             >
+              <SheetTitle className="sr-only">Menú de navegación</SheetTitle>
               <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between p-4 border-b border-[#2F2F2F]">
-                  <div className="bg-[#0B0B0B] px-3 py-1">
+                <div className="flex items-center justify-between p-4 border-b border-border">
+                  <div className="bg-background px-3 py-1">
                     <Image
                       src="/images/logoApolo.png"
                       alt="Apolo Logo"
@@ -151,7 +153,7 @@ export function Header() {
                   <Link
                     href="/productos"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-2 m-4 py-3 bg-[#FFCC00] text-[#0B0B0B] font-semibold rounded-full"
+                    className="flex items-center justify-center gap-2 m-4 py-3 bg-accent text-accent-foreground font-semibold rounded-full"
                   >
                     ENCUENTRA TU LUBRICANTE
                   </Link>
@@ -160,25 +162,25 @@ export function Header() {
                     <Link
                       href="/"
                       onClick={() => setIsOpen(false)}
-                      className={`px-4 py-4 border-b border-[#2F2F2F] hover:bg-[#2F2F2F] ${isActive("/") ? "text-[#FFCC00]" : "text-white"}`}
+                      className={`px-4 py-4 border-b border-secondary hover:bg-secondary ${isActive("/") ? "text-accent" : "text-white"}`}
                     >
                       Inicio
                     </Link>
                     <Link
                       href="/nosotros"
                       onClick={() => setIsOpen(false)}
-                      className={`px-4 py-4 border-b border-[#2F2F2F] hover:bg-[#2F2F2F] ${isActive("/nosotros") ? "text-[#FFCC00]" : "text-white"}`}
+                      className={`px-4 py-4 border-b border-secondary hover:bg-secondary ${isActive("/nosotros") ? "text-accent" : "text-white"}`}
                     >
                       Nosotros
                     </Link>
 
                     {/* Mobile Products Menu */}
-                    <div className="border-b border-[#2F2F2F]">
+                    <div className="border-b border-secondary">
                       <button
                         onClick={() =>
                           setMobileProductsOpen(!mobileProductsOpen)
                         }
-                        className={`w-full flex items-center justify-between px-4 py-4 hover:bg-[#2F2F2F] ${isActive("/productos") ? "text-[#FFCC00]" : "text-white"}`}
+                        className={`w-full flex items-center justify-between px-4 py-4 hover:bg-secondary ${isActive("/productos") ? "text-accent" : "text-white"}`}
                       >
                         <span>Productos</span>
                         <ChevronDown
@@ -187,11 +189,11 @@ export function Header() {
                       </button>
 
                       {mobileProductsOpen && (
-                        <div className="bg-[#0B0B0B]">
+                        <div className="bg-background">
                           <Link
                             href="/productos"
                             onClick={() => setIsOpen(false)}
-                            className="block px-6 py-3 text-[#FFCC00] hover:bg-[#2F2F2F] font-medium"
+                            className="block px-6 py-3 text-accent hover:bg-secondary font-medium"
                           >
                             Ver todos los productos
                           </Link>
@@ -205,7 +207,7 @@ export function Header() {
                                       : category.id,
                                   )
                                 }
-                                className="w-full flex items-center justify-between px-6 py-3 text-white hover:bg-[#2F2F2F]"
+                                className="w-full flex items-center justify-between px-6 py-3 text-white hover:bg-secondary"
                               >
                                 <span>{category.name}</span>
                                 <ChevronDown
@@ -214,13 +216,13 @@ export function Header() {
                               </button>
 
                               {mobileActiveCategory === category.id && (
-                                <div className="bg-[#1C1C1C]">
+                                <div className="bg-card">
                                   {category.subcategories.map((sub) => (
                                     <Link
                                       key={sub.id}
                                       href={`/productos?category=${category.id}&subcategory=${sub.id}`}
                                       onClick={() => setIsOpen(false)}
-                                      className="block px-8 py-2 text-sm text-[#B5B5B5] hover:text-white hover:bg-[#2F2F2F]"
+                                      className="block px-8 py-2 text-sm text-muted-foreground hover:text-white hover:bg-secondary"
                                     >
                                       {sub.name}
                                     </Link>
@@ -236,7 +238,7 @@ export function Header() {
                     <Link
                       href="/contacto"
                       onClick={() => setIsOpen(false)}
-                      className={`px-4 py-4 border-b border-[#2F2F2F] hover:bg-[#2F2F2F] ${isActive("/contacto") ? "text-[#FFCC00]" : "text-white"}`}
+                      className={`px-4 py-4 border-b border-secondary hover:bg-secondary ${isActive("/contacto") ? "text-accent" : "text-white"}`}
                     >
                       Contacto
                     </Link>
@@ -264,18 +266,16 @@ export function Header() {
                     onMouseEnter={() => setActiveCategory(category)}
                     className={`w-full text-left px-4 py-3 flex items-center gap-2 transition-colors ${
                       activeCategory.id === category.id
-                        ? "bg-gray-100 text-[#C21A1A]"
+                        ? "bg-gray-100 text-primary"
                         : "text-gray-700 hover:bg-gray-50"
                     }`}
                   >
                     {activeCategory.id === category.id && (
-                      <span className="w-2 h-2 rounded-full bg-[#C21A1A]" />
+                      <span className="w-2 h-2 rounded-full bg-primary" />
                     )}
                     <span
                       className={
-                        activeCategory.id === category.id
-                          ? "text-[#C21A1A]"
-                          : ""
+                        activeCategory.id === category.id ? "text-primary" : ""
                       }
                     >
                       {category.name}
@@ -287,7 +287,7 @@ export function Header() {
               {/* Subcategories */}
               <div className="flex-1 p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="w-8 h-1 bg-[#C21A1A]" />
+                  <span className="w-8 h-1 bg-primary" />
                   <h3 className="text-xl font-semibold text-gray-900">
                     {activeCategory.name}
                   </h3>
@@ -298,7 +298,7 @@ export function Header() {
                       key={sub.id}
                       href={`/productos?category=${activeCategory.id}&subcategory=${sub.id}`}
                       onClick={() => setShowMegaMenu(false)}
-                      className="text-gray-600 hover:text-[#C21A1A] hover:underline py-1"
+                      className="text-gray-600 hover:text-primary hover:underline py-1"
                     >
                       {sub.name}
                     </Link>

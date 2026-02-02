@@ -123,19 +123,19 @@ export function Products() {
 
   const Breadcrumb = () => (
     <nav className="flex items-center gap-2 text-sm mb-6 flex-wrap">
-      <Link href="/" className="text-[#C21A1A] hover:underline">
+      <Link href="/" className="text-primary hover:underline">
         INICIO
       </Link>
-      <ChevronRight className="h-4 w-4 text-[#B5B5B5]" />
-      <button onClick={clearFilters} className="text-[#C21A1A] hover:underline">
+      <ChevronRight className="h-4 w-4 text-muted-foreground" />
+      <button onClick={clearFilters} className="text-primary hover:underline">
         PRODUCTOS
       </button>
       {selectedCategory && (
         <>
-          <ChevronRight className="h-4 w-4 text-[#B5B5B5]" />
+          <ChevronRight className="h-4 w-4 text-muted-foreground" />
           <button 
             onClick={() => { setSelectedSubcategory(null); setSelectedViscosities([]) }}
-            className={selectedSubcategory ? "text-[#C21A1A] hover:underline" : "text-[#B5B5B5]"}
+            className={selectedSubcategory ? "text-primary hover:underline" : "text-muted-foreground"}
           >
             {selectedCategory.name.toUpperCase()}
           </button>
@@ -143,8 +143,8 @@ export function Products() {
       )}
       {selectedSubcategory && (
         <>
-          <ChevronRight className="h-4 w-4 text-[#B5B5B5]" />
-          <span className="text-[#B5B5B5]">{selectedSubcategory.name.toUpperCase()}</span>
+          <ChevronRight className="h-4 w-4 text-muted-foreground" />
+          <span className="text-muted-foreground">{selectedSubcategory.name.toUpperCase()}</span>
         </>
       )}
     </nav>
@@ -157,7 +157,7 @@ export function Products() {
         <div className="mb-6">
           <button
             onClick={() => setViscosityOpen(!viscosityOpen)}
-            className="flex items-center justify-between w-full py-2 border-b border-[#2F2F2F] text-foreground font-semibold"
+            className="flex items-center justify-between w-full py-2 border-b border-border text-foreground font-semibold"
           >
             VISCOSIDAD
             <ChevronDown className={`h-5 w-5 transition-transform ${viscosityOpen ? 'rotate-180' : ''}`} />
@@ -175,9 +175,9 @@ export function Products() {
                     <Checkbox
                       checked={selectedViscosities.includes(visc)}
                       onCheckedChange={() => handleViscosityToggle(visc)}
-                      className="border-[#B5B5B5] data-[state=checked]:bg-[#C21A1A] data-[state=checked]:border-[#C21A1A]"
+                      className="border-muted-foreground data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                     />
-                    <span className="text-[#B5B5B5] group-hover:text-foreground">
+                    <span className="text-muted-foreground group-hover:text-foreground">
                       SAE {visc} <span className="text-muted-foreground">({count})</span>
                     </span>
                   </label>
@@ -191,14 +191,14 @@ export function Products() {
       {/* Categories */}
       {!selectedCategory && !searchQuery && (
         <div>
-          <div className="py-2 border-b border-[#2F2F2F] text-foreground font-semibold mb-2">
+          <div className="py-2 border-b border-border text-foreground font-semibold mb-2">
             CATEGORIAS
           </div>
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => handleCategorySelect(cat)}
-              className="w-full text-left py-2 text-[#B5B5B5] hover:text-[#C21A1A] transition-colors"
+              className="w-full text-left py-2 text-muted-foreground hover:text-primary transition-colors"
             >
               {cat.name}
             </button>
@@ -211,12 +211,12 @@ export function Products() {
         <div>
           <button
             onClick={clearFilters}
-            className="flex items-center gap-2 text-[#C21A1A] hover:underline mb-4"
+            className="flex items-center gap-2 text-primary hover:underline mb-4"
           >
             <ChevronRight className="h-4 w-4 rotate-180" />
             Volver a categorias
           </button>
-          <div className="py-2 border-b border-[#2F2F2F] text-foreground font-semibold mb-2">
+          <div className="py-2 border-b border-secondary text-foreground font-semibold mb-2">
             {selectedCategory.name.toUpperCase()}
           </div>
           {selectedCategory.subcategories.map((sub) => (
@@ -225,8 +225,8 @@ export function Products() {
               onClick={() => handleSubcategorySelect(sub)}
               className={`w-full text-left py-2 transition-colors underline ${
                 selectedSubcategory?.id === sub.id 
-                  ? 'text-[#C21A1A]' 
-                  : 'text-[#B5B5B5] hover:text-[#C21A1A]'
+                  ? 'text-primary' 
+                  : 'text-muted-foreground hover:text-primary'
               }`}
             >
               {sub.name}
@@ -243,7 +243,7 @@ export function Products() {
     if (viewMode === "list") {
       return (
         <Link href={`/productos/${product.id}`} className="block">
-          <div className="bg-card border border-[#2F2F2F] rounded-lg p-4 hover:border-[#C21A1A]/50 transition-colors">
+          <div className="bg-card border border-border rounded-lg p-4 hover:border-primary/50 transition-colors">
             <div className="flex gap-4">
               <div className="relative w-24 h-24 flex-shrink-0 bg-white rounded">
                 <Image
@@ -255,12 +255,12 @@ export function Products() {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-start justify-between gap-2 flex-wrap">
-                  <span className="text-xs px-2 py-1 bg-[#8B7355] text-white font-medium">
+                  <span className="text-xs px-2 py-1 bg-[#C9A24D] text-white font-medium">
                     {subcategory?.name.toUpperCase()}
                   </span>
                 </div>
                 <h4 className="font-bold text-foreground mt-2">
-                  APOLO <span className="text-[#C21A1A]">{product.line}</span>
+                  APOLO <span className="text-primary">{product.line}</span>
                 </h4>
                 <p className="text-xl font-bold text-foreground">
                   {product.viscosity || product.name.split(' ').slice(1).join(' ')}
@@ -271,7 +271,7 @@ export function Products() {
                 <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
                   {product.description}
                 </p>
-                <span className="text-[#C21A1A] hover:underline text-sm mt-2 font-medium inline-block">
+                <span className="text-primary hover:underline text-sm mt-2 font-medium inline-block">
                   Ver detalles →
                 </span>
               </div>
@@ -283,10 +283,10 @@ export function Products() {
 
     return (
       <Link href={`/productos/${product.id}`} className="block">
-        <div className="bg-card border border-[#2F2F2F] rounded-lg overflow-hidden hover:border-[#C21A1A]/50 transition-colors group">
-          <div className="border-t-4 border-[#8B7355]" />
+        <div className="bg-card border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-colors group">
+          <div className="border-t-4 border-[#C9A24D]" />
           <div className="p-4">
-            <span className="inline-block text-xs px-2 py-1 bg-[#8B7355] text-white font-medium mb-3">
+            <span className="inline-block text-xs px-2 py-1 bg-[#C9A24D] text-white font-medium mb-3">
               {subcategory?.name.toUpperCase()}
             </span>
             
@@ -300,7 +300,7 @@ export function Products() {
             </div>
 
             <h4 className="font-bold text-foreground">
-              APOLO <span className="text-[#C21A1A]">{product.line}</span>
+              APOLO <span className="text-primary">{product.line}</span>
             </h4>
             <p className="text-lg font-bold text-foreground">
               {product.viscosity || product.name.split(' ').slice(1).join(' ')}
@@ -311,7 +311,7 @@ export function Products() {
             <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
               {product.description}
             </p>
-            <span className="text-[#C21A1A] hover:underline text-sm mt-3 font-medium inline-block">
+            <span className="text-primary hover:underline text-sm mt-3 font-medium inline-block">
               Ver detalles →
             </span>
           </div>
@@ -338,7 +338,7 @@ export function Products() {
                   setSelectedSubcategory(null)
                 }
               }}
-              className="pl-12 pr-12 py-6 bg-card border-[#2F2F2F] text-foreground placeholder:text-muted-foreground text-base"
+              className="pl-12 pr-12 py-6 bg-card border-border text-foreground placeholder:text-muted-foreground text-base"
             />
             {searchQuery && (
               <button
@@ -368,7 +368,7 @@ export function Products() {
         <div className="lg:hidden mb-4">
           <button
             onClick={() => setMobileSidebarOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-[#1C1C1C] border border-[#2F2F2F] rounded text-foreground"
+            className="flex items-center gap-2 px-4 py-2 bg-muted border border-border rounded text-foreground"
           >
             <List className="h-5 w-5" />
             Filtros
@@ -382,8 +382,8 @@ export function Products() {
               className="absolute inset-0 bg-black/50" 
               onClick={() => setMobileSidebarOpen(false)} 
             />
-            <div className="absolute left-0 top-0 bottom-0 w-80 bg-[#1C1C1C] overflow-y-auto">
-              <div className="flex items-center justify-between p-4 border-b border-[#2F2F2F]">
+            <div className="absolute left-0 top-0 bottom-0 w-80 bg-muted overflow-y-auto">
+              <div className="flex items-center justify-between p-4 border-b border-border">
                 <span className="font-semibold text-foreground">Filtros</span>
                 <button onClick={() => setMobileSidebarOpen(false)}>
                   <X className="h-6 w-6 text-foreground" />
@@ -411,13 +411,13 @@ export function Products() {
                 <span className="text-sm text-muted-foreground">VER</span>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={`p-2 rounded ${viewMode === "list" ? 'bg-[#2F2F2F] text-foreground' : 'text-muted-foreground'}`}
+                  className={`p-2 rounded ${viewMode === "list" ? 'bg-secondary text-foreground' : 'text-muted-foreground'}`}
                 >
                   <List className="h-5 w-5" />
                 </button>
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-2 rounded ${viewMode === "grid" ? 'bg-[#2F2F2F] text-foreground' : 'text-muted-foreground'}`}
+                  className={`p-2 rounded ${viewMode === "grid" ? 'bg-secondary text-foreground' : 'text-muted-foreground'}`}
                 >
                   <Grid3X3 className="h-5 w-5" />
                 </button>
@@ -427,15 +427,15 @@ export function Products() {
             {/* Category selection if nothing selected */}
             {!selectedCategory && !searchQuery && (
               <div className="grid gap-4">
-                <div className="bg-[#2F2F2F]/50 py-3 px-4 border-l-4 border-[#C21A1A]">
+                <div className="bg-secondary/50 py-3 px-4 border-l-4 border-primary">
                   <h3 className="font-semibold text-foreground">Productos</h3>
                 </div>
-                <div className="bg-card border border-[#2F2F2F] rounded-lg divide-y divide-[#2F2F2F]">
+                <div className="bg-card border border-border rounded-lg divide-y divide-border">
                   {categories.map((category) => (
                     <button
                       key={category.id}
                       onClick={() => handleCategorySelect(category)}
-                      className="w-full flex items-center justify-between p-4 hover:bg-[#2F2F2F]/30 transition-colors text-left"
+                      className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors text-left"
                     >
                       <span className="text-foreground">{category.name}</span>
                       <ChevronRight className="h-5 w-5 text-muted-foreground" />
@@ -448,15 +448,15 @@ export function Products() {
             {/* Subcategory selection */}
             {selectedCategory && !selectedSubcategory && !searchQuery && (
               <div className="grid gap-4">
-                <div className="bg-[#2F2F2F]/50 py-3 px-4 border-l-4 border-[#C21A1A]">
+                <div className="bg-secondary/50 py-3 px-4 border-l-4 border-primary">
                   <h3 className="font-semibold text-foreground">{selectedCategory.name}</h3>
                 </div>
-                <div className="bg-card border border-[#2F2F2F] rounded-lg divide-y divide-[#2F2F2F]">
+                <div className="bg-card border border-border rounded-lg divide-y divide-border">
                   {selectedCategory.subcategories.map((sub) => (
                     <button
                       key={sub.id}
                       onClick={() => handleSubcategorySelect(sub)}
-                      className="w-full flex items-center justify-between p-4 hover:bg-[#2F2F2F]/30 transition-colors text-left"
+                      className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors text-left"
                     >
                       <span className="text-foreground underline">{sub.name}</span>
                       <ChevronRight className="h-5 w-5 text-muted-foreground" />
