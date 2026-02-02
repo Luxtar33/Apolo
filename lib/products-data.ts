@@ -98,8 +98,8 @@ export const categories: Category[] = [
 export const products: Product[] = [
   // AUTOMÓVIL - Aceites de motor
   /* ========== AUTOMÓVIL – ACEITES MOTOR ========== */
-{ id: "1", name: "Full Synthetic", line: "GASOLINERO", code: "APL-GAS-530", viscosity: "5W-30", type: "Sintético", description: "Aceite full sintético API SP.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
-{ id: "2", name: "Full Synthetic", line: "GASOLINERO", code: "APL-GAS-540", viscosity: "5W-40", type: "Sintético", description: "Protección superior para motores modernos.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
+{ id: "1", name: "Full Synthetic", line: "GASOLINERO", code: "APL-GAS-530", viscosity: "5W-30", type: "Sintético", description: "Aceite full sintético API SP.", image: "/images/products/APL-GAS-530.png", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
+{ id: "2", name: "Full Synthetic", line: "GASOLINERO", code: "APL-GAS-540", viscosity: "5W-40", type: "Sintético", description: "Protección superior para motores modernos.", image: "/images/products/APL-GAS-540.png", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
 { id: "3", name: "Semi Synthetic", line: "GASOLINERO", code: "APL-GAS-1030", viscosity: "10W-30", type: "Semi-sintético", description: "Motor gasolina alto rendimiento.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
 { id: "4", name: "Semi Synthetic", line: "GASOLINERO", code: "APL-GAS-2050", viscosity: "20W-50", type: "Semi-sintético", description: "Motores de alto kilometraje.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
 { id: "5", name: "Mineral", line: "GASOLINERO", code: "APL-GAS-2550", viscosity: "25W-50", type: "Mineral", description: "Uso diario en climas cálidos.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
