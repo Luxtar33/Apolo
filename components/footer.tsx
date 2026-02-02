@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 
 const footerLinks = {
   productos: [
@@ -22,9 +23,13 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-4">
               <div className="bg-[#C21A1A] px-4 py-2">
-                <span className="text-xl font-bold tracking-tight text-white">
-                  APOLO
-                </span>
+                <Image
+                  src="/images/logoApolo.png"
+                  alt="Apolo Logo"
+                  width={100}
+                  height={30}
+                  className="object-contain"
+                />
               </div>
             </Link>
             <p className="text-muted-foreground max-w-sm mb-6 leading-relaxed">
