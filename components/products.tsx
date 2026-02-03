@@ -122,34 +122,55 @@ export function Products() {
     setSearchQuery("")
   }
 
-  const Breadcrumb = () => (
-    <nav className="flex items-center gap-2 text-sm mb-6 flex-wrap">
-      <Link href="/" className="text-primary hover:underline">
-        INICIO
-      </Link>
-      <ChevronRight className="h-4 w-4 text-muted-foreground" />
-      <button onClick={clearFilters} className="text-primary hover:underline">
-        PRODUCTOS
-      </button>
-      {selectedCategory && (
-        <>
-          <ChevronRight className="h-4 w-4 text-muted-foreground" />
-          <button 
-            onClick={() => { setSelectedSubcategory(null); setSelectedViscosities([]) }}
-            className={selectedSubcategory ? "text-primary hover:underline" : "text-muted-foreground"}
-          >
-            {selectedCategory.name.toUpperCase()}
-          </button>
-        </>
-      )}
-      {selectedSubcategory && (
-        <>
-          <ChevronRight className="h-4 w-4 text-muted-foreground" />
-          <span className="text-muted-foreground">{selectedSubcategory.name.toUpperCase()}</span>
-        </>
-      )}
-    </nav>
-  )
+const Breadcrumb = () => (
+  <nav className="flex items-center gap-2 text-sm mb-6 flex-wrap">
+    
+    <Link
+      href="/"
+      className="text-oil-dark hover:text-oil-gold transition-colors"
+    >
+      INICIO
+    </Link>
+
+    <ChevronRight className="h-4 w-4 text-oil-muted" />
+
+    <button
+      onClick={clearFilters}
+      className="text-oil-dark hover:text-oil-gold transition-colors"
+    >
+      PRODUCTOS
+    </button>
+
+    {selectedCategory && (
+      <>
+        <ChevronRight className="h-4 w-4 text-oil-muted" />
+        <button
+          onClick={() => {
+            setSelectedSubcategory(null);
+            setSelectedViscosities([]);
+          }}
+          className={
+            selectedSubcategory
+              ? "text-oil-normal hover:text-oil-gold transition-colors"
+              : "text-oil-dark"
+          }
+        >
+          {selectedCategory.name.toUpperCase()}
+        </button>
+      </>
+    )}
+
+    {selectedSubcategory && (
+      <>
+        <ChevronRight className="h-4 w-4 text-oil-muted" />
+        <span className="text-oil-muted">
+          {selectedSubcategory.name.toUpperCase()}
+        </span>
+      </>
+    )}
+  </nav>
+);
+
 
   const Sidebar = ({ mobile = false }: { mobile?: boolean }) => (
     <div className={mobile ? "p-4" : ""}>
@@ -266,9 +287,11 @@ export function Products() {
                 <p className="text-xl font-bold text-foreground">
                   {product.viscosity || product.name.split(' ').slice(1).join(' ')}
                 </p>
-                <p className="text-sm text-muted-foreground mt-1">
+              
+              {/*  <p className="text-sm text-muted-foreground mt-1">
                   PRODUCTO: {product.code}
                 </p>
+              */}
                 <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
                   {product.description}
                 </p>
@@ -309,9 +332,12 @@ export function Products() {
             <p className="text-lg font-bold text-foreground">
               {product.viscosity || product.name.split(' ').slice(1).join(' ')}
             </p>
+
+            {/*}
             <p className="text-sm text-muted-foreground mt-1">
               PRODUCTO: {product.code}
             </p>
+            */}
             <p className="text-sm text-muted-foreground mt-2 line-clamp-2">
               {product.description}
             </p>

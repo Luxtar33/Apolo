@@ -39,14 +39,50 @@
   --sidebar-ring: #F5C542;
 }
 
+
 body {
-  background-image: url('/images/fondo.jpeg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
 }
 
+
+
+
+body { background-image: url('/images/fondo10.jpeg');
+   background-size: cover; 
+   background-attachment: fixed; 
+   background-position: center; 
+   background-repeat: no-repeat; 
+  }
+
+/*
+codigo para dar claridad al fondo
+body {
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,0.10),
+      rgba(255,255,255,0.10)
+    ),
+    url('/images/fondo2.jpeg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: -1;
+}
+*/
 .dark {
   --background: #0E0E0E;
   --foreground: #FFFFFF;

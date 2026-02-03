@@ -51,35 +51,77 @@ export function About() {
         </div>
 
         {/* Nueva sección de Misión y Visión */}
-        <div className="mt-20 grid lg:grid-cols-2 gap-8">
-          <Card className="bg-background border-border hover:border-primary/50 transition-colors">
-            <CardHeader>
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <Target className="h-6 w-6 text-primary" />
-              </div>
-              <CardTitle className="text-2xl font-bold text-foreground">Misión</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground leading-relaxed">
-                En Apolo Lubricantes nos dedicamos en ser los mejores importadores y distribuidores de lubricantes de aceites a nivel nacional llegando a todos los rincones del país con productos originales de máxima calidad, asesorías técnicas especializadas y un servicio confiable, contribuyendo al óptimo desempeño de motores, gasolineros, petroleros y maquinarias e impulsando su durabilidad y la satisfacción de nuestros clientes.
-              </p>
-            </CardContent>
-          </Card>
+        <div className="mt-20 grid lg:grid-cols-2 gap-10 relative">
 
-          <Card className="bg-background border-border hover:border-primary/50 transition-colors">
-            <CardHeader>
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <Eye className="h-6 w-6 text-primary" />
-              </div>
-              <CardTitle className="text-2xl font-bold text-foreground">Visión</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground leading-relaxed">
-                Ser el referente líder en lubricantes en el Perú, impulsando el desarrollo automotriz e industrial mediante una red logística innovadora, tecnología de vanguardia y un compromiso inquebrantable con la sostenibilidad y la confianza de nuestros clientes.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+  {/* Línea central dorada */}
+
+  {/* MISIÓN */}
+  <Card
+    className="
+      relative
+      bg-black/50
+      backdrop-blur-xl
+      border border-yellow-400/40
+      shadow-[0_0_40px_rgba(255,193,7,0.25)]
+      hover:shadow-[0_0_60px_rgba(255,193,7,0.45)]
+      transition-all duration-500
+      rounded-2xl
+    "
+  >
+    <CardHeader>
+      <div className="h-12 w-12 rounded-lg bg-yellow-400/10 flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(255,193,7,0.6)]">
+        <Target className="h-6 w-6 text-yellow-400" />
+      </div>
+      <CardTitle className="text-3xl font-semibold text-white tracking-wide">
+        Misión
+      </CardTitle>
+    </CardHeader>
+    <CardContent>
+      <p className="text-white/80 leading-relaxed">
+        En Apolo Lubricantes nos dedicamos en ser los mejores importadores y
+        distribuidores de lubricantes de aceites a nivel nacional llegando a
+        todos los rincones del país con productos originales de máxima calidad,
+        asesorías técnicas especializadas y un servicio confiable,
+        contribuyendo al óptimo desempeño de motores, gasolineros, petroleros y
+        maquinarias e impulsando su durabilidad y la satisfacción de nuestros
+        clientes.
+      </p>
+    </CardContent>
+  </Card>
+
+  {/* VISIÓN */}
+  <Card
+    className="
+      relative
+      bg-black/50
+      backdrop-blur-xl
+      border border-yellow-400/40
+      shadow-[0_0_40px_rgba(255,193,7,0.25)]
+      hover:shadow-[0_0_60px_rgba(255,193,7,0.45)]
+      transition-all duration-500
+      rounded-2xl
+    "
+  >
+    <CardHeader>
+      <div className="h-12 w-12 rounded-lg bg-yellow-400/10 flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(255,193,7,0.6)]">
+        <Eye className="h-6 w-6 text-yellow-400" />
+      </div>
+      <CardTitle className="text-3xl font-semibold text-white tracking-wide">
+        Visión
+      </CardTitle>
+    </CardHeader>
+    <CardContent>
+      <p className="text-white/80 leading-relaxed">
+        Ser el referente líder en lubricantes en el Perú, impulsando el
+        desarrollo automotriz e industrial mediante una red logística
+        innovadora, tecnología de vanguardia y un compromiso inquebrantable con
+        la sostenibilidad y la confianza de nuestros clientes.
+      </p>
+    </CardContent>
+  </Card>
+
+</div>
+
       </div>
     </section>
   )

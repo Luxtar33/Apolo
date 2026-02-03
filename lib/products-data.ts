@@ -103,7 +103,7 @@ export const products: Product[] = [
   { id: "2", name: "Litio Azul", line: "GRASAS", code: "APL-GRA-LIT", brand: "Apolo", viscosity: "", type: "Litio", presentation: "Pote", description: "Alta temperatura.", image: "/images/products/litioazul.bmp", categoryId: "automovil", subcategoryId: "grasas-auto" },
 
   /* --- ACEITES --- */
-  { id: "3", name: "GL-5", line: "TRANSMISIÓN", code: "APL-GL5-7590", brand: "Apolo", viscosity: "75W90", type: "GL-5", presentation: "1/4 Gal", description: "Cajas manuales.", image: "/images/products/gl75w90.bmp", categoryId: "automovil", subcategoryId: "transmision-manual-auto" },
+  { id: "3", name: "GL-5", line: "TRANSMISIÓN", code: "APL-GL5-7590", brand: "Apolo", viscosity: "75W90", type: "GL-5", presentation: "1/4 Gal", description: "Cajas manuales.", image: "/images/products/gl575w90.bmp", categoryId: "automovil", subcategoryId: "transmision-manual-auto" },
 
   { id: "4", name: "GL-5", line: "TRANSMISIÓN", code: "APL-GL5-8090", brand: "Apolo", viscosity: "80W90", type: "GL-5", presentation: "Balde", description: "Protección de engranajes.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "transmision-manual-auto" },
 
@@ -180,15 +180,15 @@ export const products: Product[] = [
   { id: "46", name: "SAE 25W60", line: "MOTO 4T", code: "OVT-MOTO-S2560", brand: "Overts", viscosity: "25W60", type: "Mineral", presentation: "1/4 Gal", description: "Moto.", image: "/images/products/sae25w60.bpm", categoryId: "motocicleta", subcategoryId: "aceites-motor-moto" },
 
   /* --- MOTORES GASOLINEROS --- */
-  { id: "47", name: "20W50 API SN", line: "GASOLINERO", code: "OVT-GAS-2050SN", brand: "Overts", viscosity: "20W50", type: "API SN", presentation: "1/4 Gal", description: "Gasolina.", image: "/images/products/20w50apisngal.bpm", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
+  { id: "47", name: "20W50 API SN", line: "GASOLINERO", code: "OVT-GAS-2050SN", brand: "Overts", viscosity: "20W50", type: "API SN", presentation: "1/4 Gal", description: "Gasolina.", image: "/images/products/20w50apisngal.bmp", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
   { id: "48", name: "25W50 API SN", line: "GASOLINERO", code: "OVT-GAS-2550SN", brand: "Overts", viscosity: "25W50", type: "API SN", presentation: "Balde", description: "Gasolina.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
 
-{ id: "49", name: "25W60 API SN", line: "GASOLINERO", code: "OVT-GAS-2560SN", brand: "Overts", viscosity: "25W60", type: "API SN", presentation: "1/4 Gal", description: "Alta viscosidad.", image: "/images/products/20w60apisngal.bpm", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
+{ id: "49", name: "25W60 API SN", line: "GASOLINERO", code: "OVT-GAS-2560SN", brand: "Overts", viscosity: "25W60", type: "API SN", presentation: "1/4 Gal", description: "Alta viscosidad.", image: "/images/products/20w60apisngal.bmp", categoryId: "automovil", subcategoryId: "aceites-motor-auto" },
 
 /* --- GRASAS AUTOMOTRICES --- */
-{ id: "50", name: "Litium Azul", line: "GRASAS", code: "OVT-GRA-LIT-B", brand: "Overts", viscosity: "", type: "Litio", presentation: "Balde", description: "Alta temperatura.", image: "/images/products/litiumazul.bpm", categoryId: "automovil", subcategoryId: "grasas-auto" },
+{ id: "50", name: "Litium Azul", line: "GRASAS", code: "OVT-GRA-LIT-B", brand: "Overts", viscosity: "", type: "Litio", presentation: "Balde", description: "Alta temperatura.", image: "/images/products/litiumazul.bmp", categoryId: "automovil", subcategoryId: "grasas-auto" },
 
-{ id: "51", name: "Chasis GLN 2", line: "GRASAS", code: "OVT-GRA-GL2-B", brand: "Overts", viscosity: "", type: "NLGI 2", presentation: "Balde", description: "Chasis.", image: "/images/products/chasisgln2.bpm", categoryId: "automovil", subcategoryId: "grasas-auto" },
+{ id: "51", name: "Chasis GLN 2", line: "GRASAS", code: "OVT-GRA-GL2-B", brand: "Overts", viscosity: "", type: "NLGI 2", presentation: "Balde", description: "Chasis.", image: "/images/products/chasisgln2.bmp", categoryId: "automovil", subcategoryId: "grasas-auto" },
 
 { id: "52", name: "Rodaje N°3", line: "GRASAS", code: "OVT-GRA-ROD3-B", brand: "Overts", viscosity: "", type: "NLGI 3", presentation: "Balde", description: "Rodamientos.", image: "/images/products/placeholder.jpg", categoryId: "automovil", subcategoryId: "grasas-auto" },
 
