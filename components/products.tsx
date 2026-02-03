@@ -1,226 +1,258 @@
-"use client"
+"use client";
 
-import { useState, useMemo, useEffect } from "react"
-import { useSearchParams } from "next/navigation"
-import Image from "next/image"
-import Link from "next/link"
-import { Search, ChevronRight, ChevronDown, Grid3X3, List, X } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
-import { 
-  categories, 
-  products, 
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Search,
+  ChevronRight,
+  ChevronDown,
+  Grid3X3,
+  List,
+  X,
+} from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  categories,
+  products,
   viscosities,
   getCategoryById,
   getSubcategoryById,
   type Product,
   type Category,
-  type Subcategory
-} from "@/lib/products-data"
+  type Subcategory,
+} from "@/lib/products-data";
 
 export function Products() {
-  const searchParams = useSearchParams()
-  const [searchQuery, setSearchQuery] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(null)
-  const [selectedSubcategory, setSelectedSubcategory] = useState<Subcategory | null>(null)
-  const [selectedViscosities, setSelectedViscosities] = useState<string[]>([])
-  const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
-  const [viscosityOpen, setViscosityOpen] = useState(true)
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
+  const searchParams = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
+    null,
+  );
+  const [selectedSubcategory, setSelectedSubcategory] =
+    useState<Subcategory | null>(null);
+  const [selectedViscosities, setSelectedViscosities] = useState<string[]>([]);
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [viscosityOpen, setViscosityOpen] = useState(true);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   // Handle URL params on load
   useEffect(() => {
-    const categoryId = searchParams.get("category")
-    const subcategoryId = searchParams.get("subcategory")
-    
+    const categoryId = searchParams.get("category");
+    const subcategoryId = searchParams.get("subcategory");
+
     if (categoryId) {
-      const category = getCategoryById(categoryId)
+      const category = getCategoryById(categoryId);
       if (category) {
-        setSelectedCategory(category)
-        
+        setSelectedCategory(category);
+
         if (subcategoryId) {
-          const subcategory = getSubcategoryById(subcategoryId)
+          const subcategory = getSubcategoryById(subcategoryId);
           if (subcategory) {
-            setSelectedSubcategory(subcategory)
+            setSelectedSubcategory(subcategory);
           }
         }
       }
     }
-  }, [searchParams])
+  }, [searchParams]);
 
   const filteredProducts = useMemo(() => {
-    let filtered = products
+    let filtered = products;
 
     if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase()
-      filtered = filtered.filter(p =>
-        p.name.toLowerCase().includes(query) ||
-        p.code.toLowerCase().includes(query) ||
-        p.viscosity?.toLowerCase().includes(query) ||
-        p.type.toLowerCase().includes(query) ||
-        p.line.toLowerCase().includes(query) ||
-        p.brand?.toLowerCase().includes(query) // Agregado para buscar por marca
-      )
+      const query = searchQuery.toLowerCase();
+      filtered = filtered.filter(
+        (p) =>
+          p.name.toLowerCase().includes(query) ||
+          p.code.toLowerCase().includes(query) ||
+          p.viscosity?.toLowerCase().includes(query) ||
+          p.type.toLowerCase().includes(query) ||
+          p.line.toLowerCase().includes(query) ||
+          p.brand?.toLowerCase().includes(query), // Agregado para buscar por marca
+      );
     } else if (selectedSubcategory) {
-      filtered = filtered.filter(p => p.subcategoryId === selectedSubcategory.id)
+      filtered = filtered.filter(
+        (p) => p.subcategoryId === selectedSubcategory.id,
+      );
     } else if (selectedCategory) {
-      filtered = filtered.filter(p => p.categoryId === selectedCategory.id)
+      filtered = filtered.filter((p) => p.categoryId === selectedCategory.id);
     }
 
     if (selectedViscosities.length > 0) {
-      filtered = filtered.filter(p => p.viscosity && selectedViscosities.includes(p.viscosity))
+      filtered = filtered.filter(
+        (p) => p.viscosity && selectedViscosities.includes(p.viscosity),
+      );
     }
 
-    return filtered
-  }, [searchQuery, selectedCategory, selectedSubcategory, selectedViscosities])
+    return filtered;
+  }, [searchQuery, selectedCategory, selectedSubcategory, selectedViscosities]);
 
   const availableViscosities = useMemo(() => {
-    const viscs = new Set<string>()
-    let productsToCheck = products
+    const viscs = new Set<string>();
+    let productsToCheck = products;
 
     if (selectedSubcategory) {
-      productsToCheck = products.filter(p => p.subcategoryId === selectedSubcategory.id)
+      productsToCheck = products.filter(
+        (p) => p.subcategoryId === selectedSubcategory.id,
+      );
     } else if (selectedCategory) {
-      productsToCheck = products.filter(p => p.categoryId === selectedCategory.id)
+      productsToCheck = products.filter(
+        (p) => p.categoryId === selectedCategory.id,
+      );
     }
 
-    productsToCheck.forEach(p => {
-      if (p.viscosity) viscs.add(p.viscosity)
-    })
+    productsToCheck.forEach((p) => {
+      if (p.viscosity) viscs.add(p.viscosity);
+    });
 
-    return viscosities.filter(v => viscs.has(v))
-  }, [selectedCategory, selectedSubcategory])
+    return viscosities.filter((v) => viscs.has(v));
+  }, [selectedCategory, selectedSubcategory]);
 
   const handleViscosityToggle = (viscosity: string) => {
-    setSelectedViscosities(prev =>
+    setSelectedViscosities((prev) =>
       prev.includes(viscosity)
-        ? prev.filter(v => v !== viscosity)
-        : [...prev, viscosity]
-    )
-  }
+        ? prev.filter((v) => v !== viscosity)
+        : [...prev, viscosity],
+    );
+  };
 
   const handleCategorySelect = (category: Category) => {
-    setSelectedCategory(category)
-    setSelectedSubcategory(null)
-    setSelectedViscosities([])
-    setSearchQuery("")
-  }
+    setSelectedCategory(category);
+    setSelectedSubcategory(null);
+    setSelectedViscosities([]);
+    setSearchQuery("");
+  };
 
   const handleSubcategorySelect = (subcategory: Subcategory) => {
-    const category = getCategoryById(subcategory.categoryId)
-    if (category) setSelectedCategory(category)
-    setSelectedSubcategory(subcategory)
-    setSelectedViscosities([])
-    setSearchQuery("")
-    setMobileSidebarOpen(false)
-  }
+    const category = getCategoryById(subcategory.categoryId);
+    if (category) setSelectedCategory(category);
+    setSelectedSubcategory(subcategory);
+    setSelectedViscosities([]);
+    setSearchQuery("");
+    setMobileSidebarOpen(false);
+  };
 
   const clearFilters = () => {
-    setSelectedCategory(null)
-    setSelectedSubcategory(null)
-    setSelectedViscosities([])
-    setSearchQuery("")
-  }
+    setSelectedCategory(null);
+    setSelectedSubcategory(null);
+    setSelectedViscosities([]);
+    setSearchQuery("");
+  };
 
-const Breadcrumb = () => (
-  <nav className="flex items-center gap-2 text-sm mb-6 flex-wrap">
-    
-    <Link
-      href="/"
-      className="text-oil-dark hover:text-oil-gold transition-colors"
-    >
-      INICIO
-    </Link>
+  const Breadcrumb = () => (
+    <nav className="flex items-center gap-2 text-sm mb-6 flex-wrap">
+      <Link
+        href="/"
+        className="text-primary-foreground hover:text-oil-gold transition-colors"
+      >
+        INICIO
+      </Link>
 
-    <ChevronRight className="h-4 w-4 text-oil-muted" />
+      <ChevronRight className="h-4 w-4 text-oil-muted" />
 
-    <button
-      onClick={clearFilters}
-      className="text-oil-dark hover:text-oil-gold transition-colors"
-    >
-      PRODUCTOS
-    </button>
+      <button
+        onClick={clearFilters}
+        className="text-primary-foreground hover:text-oil-gold transition-colors"
+      >
+        PRODUCTOS
+      </button>
 
-    {selectedCategory && (
-      <>
-        <ChevronRight className="h-4 w-4 text-oil-muted" />
-        <button
-          onClick={() => {
-            setSelectedSubcategory(null);
-            setSelectedViscosities([]);
-          }}
-          className={
-            selectedSubcategory
-              ? "text-oil-normal hover:text-oil-gold transition-colors"
-              : "text-oil-dark"
-          }
-        >
-          {selectedCategory.name.toUpperCase()}
-        </button>
-      </>
-    )}
+      {selectedCategory && (
+        <>
+          <ChevronRight className="h-4 w-4 text-oil-muted" />
+          <button
+            onClick={() => {
+              setSelectedSubcategory(null);
+              setSelectedViscosities([]);
+            }}
+            className={
+              selectedSubcategory
+                ? "text-primary-foreground hover:text-oil-gold transition-colors"
+                : "text-sb-muted"
+            }
+          >
+            {selectedCategory.name.toUpperCase()}
+          </button>
+        </>
+      )}
 
-    {selectedSubcategory && (
-      <>
-        <ChevronRight className="h-4 w-4 text-oil-muted" />
-        <span className="text-oil-muted">
-          {selectedSubcategory.name.toUpperCase()}
-        </span>
-      </>
-    )}
-  </nav>
-);
-
+      {selectedSubcategory && (
+        <>
+          <ChevronRight className="h-4 w-4 text-primary-foreground" />
+          <span className="text-primary-foreground">
+            {selectedSubcategory.name.toUpperCase()}
+          </span>
+        </>
+      )}
+    </nav>
+  );
 
   const Sidebar = ({ mobile = false }: { mobile?: boolean }) => (
     <div className={mobile ? "p-4" : ""}>
       {/* Viscosity Filter */}
-      {availableViscosities.length > 0 && (selectedCategory || selectedSubcategory) && (
-        <div className="mb-6">
-          <button
-            onClick={() => setViscosityOpen(!viscosityOpen)}
-            className="flex items-center justify-between w-full py-2 border-b border-border text-foreground font-semibold"
-          >
-            VISCOSIDAD
-            <ChevronDown className={`h-5 w-5 transition-transform ${viscosityOpen ? 'rotate-180' : ''}`} />
-          </button>
-          {viscosityOpen && (
-            <div className="mt-3 space-y-2 max-h-64 overflow-y-auto">
-              {availableViscosities.map((visc) => {
-                const count = products.filter(p => {
-                  if (selectedSubcategory) return p.subcategoryId === selectedSubcategory.id && p.viscosity === visc
-                  if (selectedCategory) return p.categoryId === selectedCategory.id && p.viscosity === visc
-                  return p.viscosity === visc
-                }).length
-                return (
-                  <label key={visc} className="flex items-center gap-2 cursor-pointer group">
-                    <Checkbox
-                      checked={selectedViscosities.includes(visc)}
-                      onCheckedChange={() => handleViscosityToggle(visc)}
-                      className="border-muted-foreground data-[state=checked]:bg-primary data-[state=checked]:border-primary"
-                    />
-                    <span className="text-muted-foreground group-hover:text-foreground">
-                      SAE {visc} <span className="text-muted-foreground">({count})</span>
-                    </span>
-                  </label>
-                )
-              })}
-            </div>
-          )}
-        </div>
-      )}
+      {availableViscosities.length > 0 &&
+        (selectedCategory || selectedSubcategory) && (
+          <div className="mb-6">
+            <button
+              onClick={() => setViscosityOpen(!viscosityOpen)}
+              className="flex items-center justify-between w-full py-2 border-b border-border text-sb-title font-semibold"
+            >
+              VISCOSIDAD
+              <ChevronDown
+                className={`h-5 w-5 transition-transform ${viscosityOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {viscosityOpen && (
+              <div className="mt-3 space-y-2 max-h-64 overflow-y-auto">
+                {availableViscosities.map((visc) => {
+                  const count = products.filter((p) => {
+                    if (selectedSubcategory)
+                      return (
+                        p.subcategoryId === selectedSubcategory.id &&
+                        p.viscosity === visc
+                      );
+                    if (selectedCategory)
+                      return (
+                        p.categoryId === selectedCategory.id &&
+                        p.viscosity === visc
+                      );
+                    return p.viscosity === visc;
+                  }).length;
+                  return (
+                    <label
+                      key={visc}
+                      className="flex items-center gap-2 cursor-pointer group"
+                    >
+                      <Checkbox
+                        checked={selectedViscosities.includes(visc)}
+                        onCheckedChange={() => handleViscosityToggle(visc)}
+                        className="border-muted-foreground data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                      />
+                      <span className="text-sb-muted group-hover:text-foreground">
+                        SAE {visc}{" "}
+                        <span className="text-sb-muted">({count})</span>
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
 
       {/* Categories */}
       {!selectedCategory && !searchQuery && (
         <div>
-          <div className="py-2 border-b border-border text-foreground font-semibold mb-2">
+          <div className="py-2 border-b border-border text-sb-title font-semibold mb-2">
             CATEGORIAS
           </div>
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => handleCategorySelect(cat)}
-              className="w-full text-left py-2 text-muted-foreground hover:text-primary transition-colors"
+              className="w-full text-left py-2 text-sb-muted hover:text-primary transition-colors"
             >
               {cat.name}
             </button>
@@ -238,7 +270,7 @@ const Breadcrumb = () => (
             <ChevronRight className="h-4 w-4 rotate-180" />
             Volver a categorias
           </button>
-          <div className="py-2 border-b border-secondary text-foreground font-semibold mb-2">
+          <div className="py-2 border-b border-secondary text-sb-title font-semibold mb-2">
             {selectedCategory.name.toUpperCase()}
           </div>
           {selectedCategory.subcategories.map((sub) => (
@@ -246,9 +278,9 @@ const Breadcrumb = () => (
               key={sub.id}
               onClick={() => handleSubcategorySelect(sub)}
               className={`w-full text-left py-2 transition-colors underline ${
-                selectedSubcategory?.id === sub.id 
-                  ? 'text-primary' 
-                  : 'text-muted-foreground hover:text-primary'
+                selectedSubcategory?.id === sub.id
+                  ? "text-primary"
+                  : "text-sb-muted hover:text-primary"
               }`}
             >
               {sub.name}
@@ -257,10 +289,10 @@ const Breadcrumb = () => (
         </div>
       )}
     </div>
-  )
+  );
 
   const ProductCard = ({ product }: { product: Product }) => {
-    const subcategory = getSubcategoryById(product.subcategoryId)
+    const subcategory = getSubcategoryById(product.subcategoryId);
 
     if (viewMode === "list") {
       return (
@@ -282,13 +314,15 @@ const Breadcrumb = () => (
                   </span>
                 </div>
                 <h4 className="font-bold text-foreground mt-2">
-                  {product.brand} <span className="text-primary">{product.line}</span>
+                  {product.brand}{" "}
+                  <span className="text-primary">{product.line}</span>
                 </h4>
                 <p className="text-xl font-bold text-foreground">
-                  {product.viscosity || product.name.split(' ').slice(1).join(' ')}
+                  {product.viscosity ||
+                    product.name.split(" ").slice(1).join(" ")}
                 </p>
-              
-              {/*  <p className="text-sm text-muted-foreground mt-1">
+
+                {/*  <p className="text-sm text-muted-foreground mt-1">
                   PRODUCTO: {product.code}
                 </p>
               */}
@@ -305,7 +339,7 @@ const Breadcrumb = () => (
             </span>
           </div>
         </Link>
-      )
+      );
     }
 
     return (
@@ -316,7 +350,7 @@ const Breadcrumb = () => (
             <span className="inline-block text-xs px-2 py-1 bg-[#C9A24D] text-white font-medium mb-3">
               {subcategory?.name.toUpperCase()}
             </span>
-            
+
             <div className="relative w-full h-32 bg-white rounded mb-4">
               <Image
                 src={product.image || "/placeholder.svg"}
@@ -327,10 +361,11 @@ const Breadcrumb = () => (
             </div>
 
             <h4 className="font-bold text-foreground">
-              {product.brand} <span className="text-primary">{product.line}</span>
+              {product.brand}{" "}
+              <span className="text-primary">{product.line}</span>
             </h4>
             <p className="text-lg font-bold text-foreground">
-              {product.viscosity || product.name.split(' ').slice(1).join(' ')}
+              {product.viscosity || product.name.split(" ").slice(1).join(" ")}
             </p>
 
             {/*}
@@ -350,8 +385,8 @@ const Breadcrumb = () => (
           </span>
         </div>
       </Link>
-    )
-  }
+    );
+  };
 
   return (
     <section className="py-12 bg-transparent min-h-screen">
@@ -365,10 +400,10 @@ const Breadcrumb = () => (
               placeholder="Buscar por nombre, codigo o viscosidad..."
               value={searchQuery}
               onChange={(e) => {
-                setSearchQuery(e.target.value)
+                setSearchQuery(e.target.value);
                 if (e.target.value) {
-                  setSelectedCategory(null)
-                  setSelectedSubcategory(null)
+                  setSelectedCategory(null);
+                  setSelectedSubcategory(null);
                 }
               }}
               className="pl-12 pr-12 py-6 bg-card border-border text-foreground placeholder:text-muted-foreground text-base"
@@ -389,11 +424,13 @@ const Breadcrumb = () => (
 
         {/* Title */}
         {(selectedCategory || selectedSubcategory || searchQuery) && (
-          <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-            {searchQuery 
-              ? `Resultados para "${searchQuery}"` 
+          <h1 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-6">
+            {searchQuery
+              ? `Resultados para "${searchQuery}"`
               : selectedCategory?.name.toUpperCase()}
-            {selectedSubcategory && !searchQuery && ` - ${selectedSubcategory.name.toUpperCase()}`}
+            {selectedSubcategory &&
+              !searchQuery &&
+              ` - ${selectedSubcategory.name.toUpperCase()}`}
           </h1>
         )}
 
@@ -411,9 +448,9 @@ const Breadcrumb = () => (
         {/* Mobile Sidebar */}
         {mobileSidebarOpen && (
           <div className="fixed inset-0 z-50 lg:hidden">
-            <div 
-              className="absolute inset-0 bg-black/50" 
-              onClick={() => setMobileSidebarOpen(false)} 
+            <div
+              className="absolute inset-0 bg-black/50"
+              onClick={() => setMobileSidebarOpen(false)}
             />
             <div className="absolute left-0 top-0 bottom-0 w-80 bg-muted overflow-y-auto">
               <div className="flex items-center justify-between p-4 border-b border-border">
@@ -429,28 +466,45 @@ const Breadcrumb = () => (
 
         <div className="flex gap-8">
           {/* Desktop Sidebar */}
-          <aside className="hidden lg:block w-64 flex-shrink-0">
+          <aside
+  className="
+    hidden lg:block w-64 flex-shrink-0
+    bg-[rgba(199,148,10,0.35)]   /* dorado elegante */
+    backdrop-blur-md
+    border border-[rgba(212,164,55,0.45)]
+    shadow-[0_8px_18px_rgba(0,0,0,0.08)]
+    rounded-2xl
+    p-4
+  "
+>
+          
             <Sidebar />
           </aside>
 
           {/* Products grid */}
           <div className="flex-1">
             {/* View toggle and count */}
-            <div className="flex items-center justify-between mb-6">
+            <div
+              className="
+                flex items-center justify-between mb-6
+                bg-secondary/50 py-3 px-4 border-l-4 border-primary
+              "
+            >
               <span className="text-muted-foreground">
-                {filteredProducts.length} producto{filteredProducts.length !== 1 ? 's' : ''}
+                {filteredProducts.length} producto
+                {filteredProducts.length !== 1 ? "s" : ""}
               </span>
               <div className="flex items-center gap-2">
                 <span className="text-sm text-muted-foreground">VER</span>
                 <button
                   onClick={() => setViewMode("list")}
-                  className={`p-2 rounded ${viewMode === "list" ? 'bg-secondary text-foreground' : 'text-muted-foreground'}`}
+                  className={`p-2 rounded ${viewMode === "list" ? "bg-secondary text-foreground" : "text-muted-foreground"}`}
                 >
                   <List className="h-5 w-5" />
                 </button>
                 <button
                   onClick={() => setViewMode("grid")}
-                  className={`p-2 rounded ${viewMode === "grid" ? 'bg-secondary text-foreground' : 'text-muted-foreground'}`}
+                  className={`p-2 rounded ${viewMode === "grid" ? "bg-secondary text-foreground" : "text-muted-foreground"}`}
                 >
                   <Grid3X3 className="h-5 w-5" />
                 </button>
@@ -482,7 +536,9 @@ const Breadcrumb = () => (
             {selectedCategory && !selectedSubcategory && !searchQuery && (
               <div className="grid gap-4">
                 <div className="bg-secondary/50 py-3 px-4 border-l-4 border-primary">
-                  <h3 className="font-semibold text-foreground">{selectedCategory.name}</h3>
+                  <h3 className="font-semibold text-foreground">
+                    {selectedCategory.name}
+                  </h3>
                 </div>
                 <div className="bg-card border border-border rounded-lg divide-y divide-border">
                   {selectedCategory.subcategories.map((sub) => (
@@ -491,7 +547,9 @@ const Breadcrumb = () => (
                       onClick={() => handleSubcategorySelect(sub)}
                       className="w-full flex items-center justify-between p-4 hover:bg-secondary/30 transition-colors text-left"
                     >
-                      <span className="text-foreground underline">{sub.name}</span>
+                      <span className="text-foreground underline">
+                        {sub.name}
+                      </span>
                       <ChevronRight className="h-5 w-5 text-muted-foreground" />
                     </button>
                   ))}
@@ -503,11 +561,13 @@ const Breadcrumb = () => (
             {(selectedSubcategory || searchQuery) && (
               <>
                 {filteredProducts.length > 0 ? (
-                  <div className={
-                    viewMode === "grid" 
-                      ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
-                      : "grid gap-4"
-                  }>
+                  <div
+                    className={
+                      viewMode === "grid"
+                        ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
+                        : "grid gap-4"
+                    }
+                  >
                     {filteredProducts.map((product) => (
                       <ProductCard key={product.id} product={product} />
                     ))}
@@ -523,5 +583,5 @@ const Breadcrumb = () => (
         </div>
       </div>
     </section>
-  )
+  );
 }
