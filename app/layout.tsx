@@ -10,24 +10,23 @@ const _oswald = Oswald({ subsets: ["latin"], variable: '--font-heading' });
 export const metadata: Metadata = {
   title: 'Apolo Lubricantes | Aceites y Lubricantes para Vehículos',
   description: 'Apolo Lubricantes - Distribuidor de aceites de motor, lubricantes y fluidos para motos, autos, camiones y vehículos pesados. Calidad y rendimiento garantizado.',
-  generator: 'v0.app',
   keywords: ['lubricantes', 'aceites de motor', 'motos', 'autos', 'camiones', 'grasas', 'refrigerantes'],
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/public/images/logoApolo.png',
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/public/images/logoApolo.png',
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: '/public/images/logoApolo.png',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/public/images/logoApolo.png',
   },
 }
 
