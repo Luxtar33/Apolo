@@ -12,22 +12,22 @@ export const metadata: Metadata = {
   description: 'Apolo Lubricantes - Distribuidor de aceites de motor, lubricantes y fluidos para motos, autos, camiones y vehículos pesados. Calidad y rendimiento garantizado.',
   keywords: ['lubricantes', 'aceites de motor', 'motos', 'autos', 'camiones', 'grasas', 'refrigerantes'],
   icons: {
-    icon: [
-      {
-        url: '/public/images/logoApolo.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/public/images/logoApolo.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/public/images/logoApolo.png',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/public/images/logoApolo.png',
-  },
+  icon: [
+    {
+      url: "/images/logoApolo.png",
+      media: "(prefers-color-scheme: light)",
+    },
+    {
+      url: "/images/logoApolo.png",
+      media: "(prefers-color-scheme: dark)",
+    },
+    {
+      url: "/images/logoApolo.png",
+      type: "image/png",
+    },
+  ],
+  apple: "/images/logoApolo.png",
+},
 }
 
 export default function RootLayout({
