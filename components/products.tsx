@@ -58,7 +58,8 @@ export function Products() {
         p.code.toLowerCase().includes(query) ||
         p.viscosity?.toLowerCase().includes(query) ||
         p.type.toLowerCase().includes(query) ||
-        p.line.toLowerCase().includes(query)
+        p.line.toLowerCase().includes(query) ||
+        p.brand?.toLowerCase().includes(query) // Agregado para buscar por marca
       )
     } else if (selectedSubcategory) {
       filtered = filtered.filter(p => p.subcategoryId === selectedSubcategory.id)
@@ -243,7 +244,7 @@ export function Products() {
     if (viewMode === "list") {
       return (
         <Link href={`/productos/${product.id}`} className="block">
-          <div className="bg-card border border-border rounded-lg p-4 hover:border-primary/50 transition-colors">
+          <div className="bg-card border border-border rounded-lg p-4 hover:border-primary/50 transition-colors relative">
             <div className="flex gap-4">
               <div className="relative w-24 h-24 flex-shrink-0 bg-white rounded">
                 <Image
@@ -260,7 +261,7 @@ export function Products() {
                   </span>
                 </div>
                 <h4 className="font-bold text-foreground mt-2">
-                  APOLO <span className="text-primary">{product.line}</span>
+                  {product.brand} <span className="text-primary">{product.line}</span>
                 </h4>
                 <p className="text-xl font-bold text-foreground">
                   {product.viscosity || product.name.split(' ').slice(1).join(' ')}
@@ -276,6 +277,9 @@ export function Products() {
                 </span>
               </div>
             </div>
+            <span className="absolute bottom-4 right-4 text-xs px-2 py-1 bg-[#C9A24D] text-white font-medium">
+              {product.presentation}
+            </span>
           </div>
         </Link>
       )
@@ -283,7 +287,7 @@ export function Products() {
 
     return (
       <Link href={`/productos/${product.id}`} className="block">
-        <div className="bg-card border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-colors group">
+        <div className="bg-card border border-border rounded-lg overflow-hidden hover:border-primary/50 transition-colors group relative">
           <div className="border-t-4 border-[#C9A24D]" />
           <div className="p-4">
             <span className="inline-block text-xs px-2 py-1 bg-[#C9A24D] text-white font-medium mb-3">
@@ -300,7 +304,7 @@ export function Products() {
             </div>
 
             <h4 className="font-bold text-foreground">
-              APOLO <span className="text-primary">{product.line}</span>
+              {product.brand} <span className="text-primary">{product.line}</span>
             </h4>
             <p className="text-lg font-bold text-foreground">
               {product.viscosity || product.name.split(' ').slice(1).join(' ')}
@@ -315,6 +319,9 @@ export function Products() {
               Ver detalles →
             </span>
           </div>
+          <span className="absolute bottom-4 right-4 text-xs px-2 py-1 bg-[#C9A24D] text-white font-medium">
+            {product.presentation}
+          </span>
         </div>
       </Link>
     )

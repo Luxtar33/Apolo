@@ -89,6 +89,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
               </h3>
 
               <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Marca</span>
+                  <span className="font-medium">{product.brand}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Presentación</span>
+                  <span className="font-medium">{product.presentation}</span>
+                </div>
                 {product.viscosity && (
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Viscosidad</span>
