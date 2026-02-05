@@ -1,5 +1,7 @@
+"use client";
+
 import { Award, Users, Clock, Truck, Target, Eye } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useState } from "react";
 
 const stats = [
   { icon: Clock, value: "15+", label: "Años de experiencia" },
@@ -8,7 +10,95 @@ const stats = [
   { icon: Award, value: "100%", label: "Productos certificados" },
 ];
 
+const brands = [
+  {
+    logo: "/images/about/marcas/amalie.png",
+    product: "/images/products/representante.png",
+    name: "Amalie",
+  },
+  {
+    logo: "/images/about/marcas/boil.png",
+    product: "/images/products/representante.png",
+    name: "Boil",
+  },
+  {
+    logo: "/images/about/marcas/bosch.png",
+    product: "/images/products/representante.png",
+    name: "Bosch",
+  },
+  {
+    logo: "/images/about/marcas/chevron.png",
+    product: "/images/products/representante.png",
+    name: "Chevron",
+  },
+  {
+    logo: "/images/about/marcas/frenosa.png",
+    product: "/images/products/representante.png",
+    name: "Frenosa",
+  },
+  {
+    logo: "/images/about/marcas/honda.png",
+    product: "/images/products/representante.png",
+    name: "Honda",
+  },
+  {
+    logo: "/images/about/marcas/lysfiltros.png",
+    product: "/images/products/representante.png",
+    name: "Lys Filtros",
+  },
+  {
+    logo: "/images/about/marcas/mannfilter.png",
+    product: "/images/products/representante.png",
+    name: "Mann Filter",
+  },
+  {
+    logo: "/images/about/marcas/motul.png",
+    product: "/images/products/representante.png",
+    name: "Motul",
+  },
+  {
+    logo: "/images/about/marcas/peak.png",
+    product: "/images/products/representante.png",
+    name: "Peak",
+  },
+  {
+    logo: "/images/about/marcas/sakura.webp",
+    product: "/images/products/representante.png",
+    name: "Sakura",
+  },
+  {
+    logo: "/images/about/marcas/sonax.png",
+    product: "/images/products/representante.png",
+    name: "Sonax",
+  },
+  {
+    logo: "/images/about/marcas/versachem.webp",
+    product: "/images/products/representante.png",
+    name: "Versachem",
+  },
+  {
+    logo: "/images/about/marcas/vextrom.png",
+    product: "/images/products/representante.png",
+    name: "Vextrom",
+  },
+  {
+    logo: "/images/about/marcas/wagner.webp",
+    product: "/images/products/representante.png",
+    name: "Wagner",
+  },
+  {
+    logo: "/images/about/marcas/yamalube.svg",
+    product: "/images/products/representante.png",
+    name: "Yamalube",
+  },
+];
+
 export function About() {
+  const [activeProduct, setActiveProduct] = useState<{
+    product: string;
+    logo: string;
+  } | null>(null);
+
   return (
     <section
       id="nosotros"
@@ -142,19 +232,25 @@ export function About() {
           </div>
         </div>
 
-        <div className="relative w-full bg-white overflow-hidden">
-          <div className="max-w-7xl mx-auto ">
+        <div
+          className="relative w-full bg-[#fef9ec] overflow-hidden 
+  py-14 sm:py-16 lg:py-20"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 space-y-10 lg:space-y-12">
             {/* MISIÓN */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div
+              className="grid grid-cols-1 lg:grid-cols-2 
+      gap-8 lg:gap-10 items-center"
+            >
               {/* Texto */}
-              <div className="order-2 lg:order-1">
-                <span className="text-yellow-500 uppercase tracking-widest text-sm">
+              <div className="order-2 lg:order-1 text-center lg:text-left">
+                <span className="text-yellow-500 uppercase tracking-widest text-xs sm:text-sm">
                   Nuestra Misión
                 </span>
-                <h3 className="mt-3 text-3xl lg:text-4xl font-extrabold text-gray-900">
+                <h3 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900">
                   Compromiso con la calidad
                 </h3>
-                <p className="mt-6 text-gray-600 leading-relaxed">
+                <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
                   Brindar lubricantes de alto rendimiento que garanticen la
                   eficiencia, seguridad y durabilidad de los equipos
                   automotrices e industriales, ofreciendo asesoría técnica y un
@@ -167,31 +263,34 @@ export function About() {
                 <img
                   src="/images/about/mision.png"
                   alt="Misión Apolo Lubricantes"
-                  className="max-h-[380px] w-auto object-contain drop-shadow-xl"
+                  className="max-h-[200px] sm:max-h-[260px] lg:max-h-[330px] w-auto object-contain drop-shadow-lg"
                 />
               </div>
             </div>
 
             {/* VISIÓN */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div
+              className="grid grid-cols-1 lg:grid-cols-2 
+      gap-8 lg:gap-10 items-center"
+            >
               {/* Imagen izquierda */}
-              <div className="order-1 lg:order-1 flex justify-center items-center">
+              <div className="order-1 flex justify-center items-center">
                 <img
                   src="/images/about/vision.png"
                   alt="Visión Apolo Lubricantes"
-                  className="max-h-[380px] w-auto object-contain drop-shadow-xl"
+                  className="max-h-[200px] sm:max-h-[260px] lg:max-h-[330px] w-auto object-contain drop-shadow-lg"
                 />
               </div>
 
               {/* Texto */}
-              <div className="order-2 lg:order-2">
-                <span className="text-yellow-500 uppercase tracking-widest text-sm">
+              <div className="order-2 text-center lg:text-left">
+                <span className="text-yellow-500 uppercase tracking-widest text-xs sm:text-sm">
                   Nuestra Visión
                 </span>
-                <h3 className="mt-3 text-3xl lg:text-4xl font-extrabold text-gray-900">
+                <h3 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900">
                   Ser líderes a nivel nacional
                 </h3>
-                <p className="mt-6 text-gray-600 leading-relaxed">
+                <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
                   Consolidarnos como una empresa líder en la distribución de
                   lubricantes, reconocida por la calidad de nuestros productos,
                   innovación constante y confianza construida con nuestros
@@ -201,6 +300,118 @@ export function About() {
             </div>
           </div>
         </div>
+
+        {/* MARCAS */}
+        <div className="w-full py-20 space-y-12 overflow-hidden bg-[#fef9ec]">
+          {/* Título */}
+          <div className="text-center">
+            <h3 className="text-3xl lg:text-4xl font-extrabold text-black">
+              Marcas con las que trabajamos
+            </h3>
+            <p className="mt-3 text-gray-400">
+              Aliados estratégicos que garantizan calidad y confianza
+            </p>
+          </div>
+
+          {/* Carrusel 1 → izquierda a derecha */}
+          <div className="relative w-full overflow-hidden">
+            <div
+              className={`flex w-max animate-marquee gap-16 ${
+                activeProduct ? "paused" : "pause-on-hover"
+              }`}
+            >
+              {brands.concat(brands).map((item, i) => (
+                <img
+                  key={i}
+                  src={item.logo}
+                  alt={item.name}
+                  className="h-16 w-auto object-contain cursor-pointer hover:scale-110 transition"
+                  onClick={() =>
+                    setActiveProduct({
+                      product: item.product,
+                      logo: item.logo,
+                    })
+                  }
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Carrusel 2 → derecha a izquierda */}
+          <div className="relative w-full overflow-hidden">
+            <div className="flex w-max animate-marquee-reverse gap-16">
+              {brands.concat(brands).map((item, i) => (
+                <img
+                  key={i}
+                  src={item.logo}
+                  alt={item.name}
+                  className="h-16 w-auto object-contain grayscale hover:grayscale-0 transition"
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+        {/* MODAL */}
+        {activeProduct && (
+          <div className="fixed left-0 top-0 w-screen h-screen z-[9999] flex items-center justify-center">
+            {/* Overlay */}
+            <div
+              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+              onClick={() => setActiveProduct(null)}
+            />
+
+            {/* Tarjeta */}
+            <div
+              className="relative w-[90%] max-w-md rounded-2xl overflow-hidden shadow-2xl animate-fade-in"
+              style={{
+                backgroundImage: "url('/images/fondo10.jpeg')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <div className=" backdrop-blur-sm p-8">
+                {/* LOGO */}
+                <div className="flex justify-center mb-4">
+                  <img
+                    src={activeProduct.logo}
+                    className="h-12 object-contain"
+                    alt="Marca"
+                  />
+                </div>
+
+                {/* BOTÓN */}
+                <button
+                  onClick={() => setActiveProduct(null)}
+                  className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-black text-white hover:bg-gray-800 transition"
+                >
+                  ✕
+                </button>
+
+                {/* PRODUCTO */}
+                <div className="flex justify-center">
+                  <img
+                    src={activeProduct.product}
+                    className="max-h-72 object-contain drop-shadow-xl"
+                    alt="Producto"
+                  />
+                </div>
+
+                <div className="mt-6 flex flex-col items-center">
+                  <span className="text-[11px] tracking-[0.3em] text-gray-500 uppercase">
+                    Selección especial
+                  </span>
+
+                  <h4 className="mt-1 text-2xl font-extrabold text-gray-900 drop-shadow-sm">
+                    PRODUCTO DESTACADO
+                  </h4>
+
+                  <div className="mt-2 w-16 h-[3px] bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 rounded-full" />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
       </div>
     </section>
   );
