@@ -13,82 +13,77 @@ const stats = [
 const brands = [
   {
     logo: "/images/about/marcas/amalie.png",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/amaliedestacado.png",
     name: "Amalie",
   },
   {
     logo: "/images/about/marcas/boil.png",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/boildestacado.png",
     name: "Boil",
   },
   {
     logo: "/images/about/marcas/bosch.png",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/boschdestacado.png",
     name: "Bosch",
   },
   {
     logo: "/images/about/marcas/chevron.png",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/chevrondestacado.png",
     name: "Chevron",
   },
   {
     logo: "/images/about/marcas/frenosa.png",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/frenosadestacado.png",
     name: "Frenosa",
   },
   {
     logo: "/images/about/marcas/honda.png",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/hondadestacado.png",
     name: "Honda",
   },
   {
     logo: "/images/about/marcas/lysfiltros.png",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/lysfiltrosdestacado.png",
     name: "Lys Filtros",
   },
   {
     logo: "/images/about/marcas/mannfilter.png",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/mannfilterdestacado.png",
     name: "Mann Filter",
   },
   {
-    logo: "/images/about/marcas/motul.png",
-    product: "/images/products/representante.png",
-    name: "Motul",
-  },
-  {
     logo: "/images/about/marcas/peak.png",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/peakdestacado.png",
     name: "Peak",
   },
   {
     logo: "/images/about/marcas/sakura.webp",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/sakuradestacado.png",
     name: "Sakura",
   },
   {
     logo: "/images/about/marcas/sonax.png",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/sonaxdestacado.png",
     name: "Sonax",
   },
   {
     logo: "/images/about/marcas/versachem.webp",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/versachemdestacado.png",
     name: "Versachem",
   },
   {
     logo: "/images/about/marcas/vextrom.png",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/vextromdestacado.png",
     name: "Vextrom",
   },
   {
     logo: "/images/about/marcas/wagner.webp",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/wagnerdestacado.png",
     name: "Wagner",
   },
   {
     logo: "/images/about/marcas/yamalube.svg",
-    product: "/images/products/representante.png",
+    product: "/images/about/ProductosDestacados/yamalubedestacado.png",
     name: "Yamalube",
   },
 ];
@@ -107,7 +102,7 @@ export function About() {
         
       "
     >
-      <div className="w-full  space-y-24 ">
+      <div className="w-full   ">
         {/* QUIÉNES SOMOS */}
         <div
           className="relative w-full min-h-[70vh]  overflow-hidden "
@@ -233,24 +228,28 @@ export function About() {
         </div>
 
         <div
-          className="relative w-full bg-[#fef9ec] overflow-hidden 
-  py-14 sm:py-16 lg:py-20"
+          className="relative w-full overflow-hidden 
+    py-14 sm:py-16 lg:py-20"
+          style={{
+            backgroundImage: "url('/images/about/fondo8.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 space-y-10 lg:space-y-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 space-y-10 lg:space-y-12 text-white">
             {/* MISIÓN */}
-            <div
-              className="grid grid-cols-1 lg:grid-cols-2 
-      gap-8 lg:gap-10 items-center"
-            >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
               {/* Texto */}
               <div className="order-2 lg:order-1 text-center lg:text-left">
-                <span className="text-yellow-500 uppercase tracking-widest text-xs sm:text-sm">
+                <span className="uppercase tracking-widest text-xs sm:text-sm text-[#f9db8b]">
                   Nuestra Misión
                 </span>
-                <h3 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900">
+
+                <h3 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#f0c14b]">
                   Compromiso con la calidad
                 </h3>
-                <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
+
+                <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg text-gray-300 leading-relaxed">
                   Brindar lubricantes de alto rendimiento que garanticen la
                   eficiencia, seguridad y durabilidad de los equipos
                   automotrices e industriales, ofreciendo asesoría técnica y un
@@ -258,39 +257,38 @@ export function About() {
                 </p>
               </div>
 
-              {/* Imagen derecha */}
+              {/* Imagen */}
               <div className="order-1 lg:order-2 flex justify-center items-center">
                 <img
                   src="/images/about/mision.png"
                   alt="Misión Apolo Lubricantes"
-                  className="max-h-[200px] sm:max-h-[260px] lg:max-h-[330px] w-auto object-contain drop-shadow-lg"
+                  className="max-h-[200px] sm:max-h-[260px] lg:max-h-[330px] w-auto object-contain drop-shadow-[0_10px_25px_rgba(240,193,75,0.35)]"
                 />
               </div>
             </div>
 
             {/* VISIÓN */}
-            <div
-              className="grid grid-cols-1 lg:grid-cols-2 
-      gap-8 lg:gap-10 items-center"
-            >
-              {/* Imagen izquierda */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
+              {/* Imagen */}
               <div className="order-1 flex justify-center items-center">
                 <img
                   src="/images/about/vision.png"
                   alt="Visión Apolo Lubricantes"
-                  className="max-h-[200px] sm:max-h-[260px] lg:max-h-[330px] w-auto object-contain drop-shadow-lg"
+                  className="max-h-[200px] sm:max-h-[260px] lg:max-h-[330px] w-auto object-contain drop-shadow-[0_10px_25px_rgba(240,193,75,0.35)]"
                 />
               </div>
 
               {/* Texto */}
               <div className="order-2 text-center lg:text-left">
-                <span className="text-yellow-500 uppercase tracking-widest text-xs sm:text-sm">
+                <span className="uppercase tracking-widest text-xs sm:text-sm text-[#f9db8b]">
                   Nuestra Visión
                 </span>
-                <h3 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900">
+
+                <h3 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#f0c14b]">
                   Ser líderes a nivel nacional
                 </h3>
-                <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed">
+
+                <p className="mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg text-gray-300 leading-relaxed">
                   Consolidarnos como una empresa líder en la distribución de
                   lubricantes, reconocida por la calidad de nuestros productos,
                   innovación constante y confianza construida con nuestros
@@ -302,13 +300,21 @@ export function About() {
         </div>
 
         {/* MARCAS */}
-        <div className="w-full py-20 space-y-12 overflow-hidden bg-[#fef9ec]">
+        <div
+          className="w-full py-20 space-y-12 overflow-hidden bg-[#fef9ec]"
+          style={{
+            backgroundImage: "url('/images/about/fondo9.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
           {/* Título */}
           <div className="text-center">
-            <h3 className="text-3xl lg:text-4xl font-extrabold text-black">
+            <h3 className="text-3xl lg:text-4xl font-extrabold text-[#f0c14b] drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]">
               Marcas con las que trabajamos
             </h3>
-            <p className="mt-3 text-gray-400">
+
+            <p className="mt-3 text-gray-300">
               Aliados estratégicos que garantizan calidad y confianza
             </p>
           </div>
@@ -325,7 +331,12 @@ export function About() {
                   key={i}
                   src={item.logo}
                   alt={item.name}
-                  className="h-16 w-auto object-contain cursor-pointer hover:scale-110 transition"
+                  className="h-16 w-auto object-contain cursor-pointer
+                    drop-shadow-[0_0_2px_rgba(255,255,255,0.9)]
+                    drop-shadow-[0_0_6px_rgba(255,255,255,0.5)]
+                    hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]
+                    hover:scale-110
+                    transition-all duration-300"
                   onClick={() =>
                     setActiveProduct({
                       product: item.product,
@@ -411,7 +422,63 @@ export function About() {
             </div>
           </div>
         )}
+        {/* NUESTROS VALORES
 
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {[
+            "Calidad",
+            "Compromiso",
+            "Confianza",
+            "Innovación",
+            "Responsabilidad Ambiental",
+          ].map((value, i) => (
+            <div
+              key={i}
+              className="
+                  bg-black/70
+                  backdrop-blur-xl
+                  border border-yellow-400/30
+                  rounded-xl
+                  py-6
+                  text-center
+                  text-white
+                  shadow-[0_0_25px_rgba(255,193,7,0.25)]
+                "
+            >
+              {value}
+            </div>
+          ))}
+        </div>
+
+        {/* POR QUÉ ELEGIR APOLÓ *
+        <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            "Productos certificados y originales",
+            "Asesoría técnica especializada",
+            "Cobertura nacional",
+            "Amplio portafolio de lubricantes",
+            "Entrega rápida y segura",
+            "Atención personalizada",
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="
+              relative
+              bg-black/70
+              backdrop-blur-xl
+              border border-yellow-400/30
+              rounded-2xl
+              p-6
+              text-white/80
+              shadow-[0_0_30px_rgba(255,193,7,0.25)]
+            "
+            >
+              <span className="text-yellow-400 font-bold mr-2">✔</span>
+              {item}
+            </div>
+          ))}
+        </div>
+        */}
       </div>
     </section>
   );
