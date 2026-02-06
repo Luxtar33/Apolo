@@ -33,9 +33,9 @@ const categoryBanners = [
 
 export function Hero() {
   return (
-    <section className="relative">
+    <section className="relative w-full">
       {/* Main Hero */}
-      <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center overflow-hidden">
+      <div className="relative min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] flex items-center overflow-hidden">
         {/* Background Video */}
         <div className="absolute inset-0">
           <video
@@ -166,36 +166,30 @@ export function Hero() {
 
             {/* Content */}
             <div
-              className={`absolute inset-0 flex flex-col justify-center ${
-                category.position === "right"
-                  ? "items-end pr-8 md:pr-16 lg:pr-24"
-                  : "items-start pl-8 md:pl-16 lg:pl-24"
-              }`}
+              className={`absolute inset-0 flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 ${category.position === "right" ? "items-end" : "items-start"}`}
             >
-              <div
-                className={`flex items-center gap-3 ${category.position === "left" ? "flex-row-reverse" : ""}`}
-              >
-                <div className="w-8 h-1 bg-primary" />
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-wide">
+              <div className={`flex items-center gap-2 md:gap-3 ${category.position === "left" ? "flex-row-reverse" : ""}`}>
+                <div className="w-6 md:w-8 h-[2px] bg-primary" />
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-wide text-center sm:text-left">
                   {category.title}
                 </h3>
               </div>
               <div
-                className={`mt-4 flex items-center gap-2 text-primary group-hover:gap-3 transition-all ${
+                className={`mt-3 md:mt-4 flex items-center gap-2 text-primary group-hover:gap-3 transition-all ${
                   category.position === "left" ? "flex-row-reverse" : ""
                 }`}
               >
-                <span className="text-sm font-medium tracking-wide">
+                <span className="text-xs sm:text-sm font-medium tracking-wide">
                   CONOCE
                 </span>
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4" />
               </div>
             </div>
           </Link>
         ))}
       </div>
       {/* "Lo mas vendido" */}
-      <div className="relative py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
+      <div className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
         {/* Efecto de brillo */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.1),transparent_50%)]" />
 
@@ -239,7 +233,7 @@ export function Hero() {
       </div>
 
       {/* Carrusel 3D - Lo más Popular */}
-      <div className="relative  py-24 overflow-hidden">
+      <div className="relative py-16 md:py-20 lg:py-24 overflow-hidden">
         {/* Fondo con patrón de rejilla */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -276,28 +270,6 @@ export function Hero() {
                 <Image
                   src="/images/inicio/masvendido/litioazul.png"
                   alt="Producto 2"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "255, 193, 7",
-            },
-            {
-              content: (
-                <Image
-                  src="/images/products/APL-GAS-540.png"
-                  alt="Producto 3"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "255, 193, 7",
-            },
-            {
-              content: (
-                <Image
-                  src="/images/products/APL-GAS-540.png"
-                  alt="Producto 4"
                   fill
                   className="object-contain"
                 />
@@ -355,7 +327,7 @@ export function Hero() {
       </div>
 
       {/* "Lo mas popular" */}
-      <div className="relative py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
+      <div className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
         {/* Efecto de brillo */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.1),transparent_50%)]" />
 
@@ -399,7 +371,7 @@ export function Hero() {
       </div>
 
       {/* Carrusel 3D - Lo más Popular */}
-      <div className="relative bg-[#0d0d0d] py-24 overflow-hidden">
+      <div className="relative bg-[#0d0d0d] py-16 md:py-20 lg:py-24 overflow-hidden">
         {/* Fondo con patrón de rejilla */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -472,7 +444,7 @@ export function Hero() {
 
 
       {/* "Terecomendamos" */}
-      <div className="relative py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
+      <div className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
         {/* Efecto de brillo */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.1),transparent_50%)]" />
 
@@ -516,7 +488,7 @@ export function Hero() {
       </div>
 
       {/* Carrusel 3D - Te Recomendamos */}
-      <div className="relative bg-[#0d0d0d] py-24 overflow-hidden">
+      <div className="relative bg-[#0d0d0d] py-16 md:py-20 lg:py-24 overflow-hidden">
         {/* Fondo con patrón de rejilla */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{

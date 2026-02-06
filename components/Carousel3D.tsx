@@ -23,10 +23,8 @@ const StyledWrapper = styled.div`
     position: relative;
     width: 100%;
     max-width: 800px;
-     height: auto;
     min-height: 420px;
     padding: 60px 0;
-    overflow: visible;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -34,10 +32,9 @@ const StyledWrapper = styled.div`
 
   .inner {
     --w: 200px;
-    --h: 280px;
+    --h: 250px;
     --translateZ: calc((var(--w) + var(--h)) / 1.8);
     --rotateX: -12deg;
-    
 
     position: absolute;
     width: var(--w);
@@ -55,94 +52,97 @@ const StyledWrapper = styled.div`
     }
   }
 
+  /* ---------- CARD 3D SLOT ---------- */
   .card {
     position: absolute;
     inset: 0;
-    border-radius: 18px;
-    padding: 10px;
-    background: linear-gradient(
-      145deg,
-      rgba(var(--color-card), 0.35),
-      rgba(20, 20, 20, 0.5)
-    );
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(var(--color-card), 0.5);
-    box-shadow:
-      0 15px 40px rgba(0, 0, 0, 0.5),
-      0 0 40px rgba(var(--color-card), 0.25),
-      inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backface-visibility: visible;
-    filter: brightness(0.85);
-    opacity: 0.95;
-
+    transform-style: preserve-3d;
     transform:
       rotateY(calc((360deg / var(--quantity)) * var(--index)))
       translateZ(var(--translateZ));
-
-    transition:
-      transform 0.4s ease,
-      filter 0.4s ease,
-      opacity 0.4s ease;
   }
 
-  .card:hover {
-    transform:
-      rotateY(calc((360deg / var(--quantity)) * var(--index)))
-      translateZ(calc(var(--translateZ) + 80px));
-    filter: brightness(1.3);
-    opacity: 1;
-    box-shadow:
-      0 20px 50px rgba(0, 0, 0, 0.6),
-      0 0 60px rgba(var(--color-card), 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  }
-
-  .img {
+  /* ---------- PREMIUM CARD ---------- */
+  .card_box {
     width: 100%;
     height: 100%;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    background: linear-gradient(
+      170deg,
+      rgba(58, 56, 56, 0.7) 0%,
+      rgb(20, 20, 20) 100%
+    );
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
+    cursor: pointer;
+    transition: all 0.35s ease;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-    @media (max-width: 1024px) {
-  .inner {
-    --w: 160px;
-    --h: 230px;
-    --translateZ: calc((var(--w) + var(--h)) / 1.6);
-  }
-}
 
-@media (max-width: 768px) {
-  .inner {
-    --w: 130px;
-    --h: 190px;
-    --translateZ: calc((var(--w) + var(--h)) / 1.4);
-    --rotateX: -8deg;
+  .card_box:hover {
+    transform: scale(0.92);
   }
 
-  .wrapper {
-    height: 300px;
+  /* ---------- RIBBON ---------- */
+  .card_box span {
+    position: absolute;
+    overflow: hidden;
+    width: 140px;
+    height: 140px;
+    top: -10px;
+    left: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-}
 
-@media (max-width: 480px) {
-  .inner {
-    --w: clamp(110px, 18vw, 200px);
-    --h: clamp(160px, 28vw, 280px);
-    --translateZ: calc((var(--w) + var(--h)) / 1.2);
-    --rotateX: -5deg;
+  .card_box span::before {
+    content: "Premium";
+    position: absolute;
+    width: 150%;
+    height: 36px;
+    background-image: linear-gradient(
+      45deg,
+      #ff6547 0%,
+      #ffb144 51%,
+      #ff7053 100%
+    );
+    transform: rotate(-45deg) translateY(-18px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
   }
 
-  .wrapper {
-    height: 260px;
+  .card_box span::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    bottom: 0;
+    left: 0;
+    height: 10px;
+    z-index: -1;
+    box-shadow: 130px -130px #cc3f47;
+    background-image: linear-gradient(
+      45deg,
+      #ff512f 0%,
+      #f09819 51%,
+      #ff512f 100%
+    );
   }
-}
 
+  .content {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    z-index: 2;
+  }
 `;
 
 const Carousel3D: React.FC<Carousel3DProps> = ({ items }) => {
@@ -160,11 +160,13 @@ const Carousel3D: React.FC<Carousel3DProps> = ({ items }) => {
               style={
                 {
                   "--index": i,
-                  "--color-card": item.color,
                 } as React.CSSProperties
               }
             >
-              <div className="img">{item.content}</div>
+              <div className="card_box">
+                <span />
+                <div className="content">{item.content}</div>
+              </div>
             </div>
           ))}
         </div>
