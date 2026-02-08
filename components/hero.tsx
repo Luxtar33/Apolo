@@ -63,7 +63,7 @@ export function Hero() {
       </div>
 
       {/* "Encuentra el lubricante" Banner */}
-     
+
       <div className="relative py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
         {/* Efecto de brillo */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.1),transparent_50%)]" />
@@ -97,7 +97,8 @@ export function Hero() {
           <div className="flex items-center justify-center gap-4">
             <div className="w-16 h-[2px] bg-gradient-to-r from-transparent to-[#C9A227] hidden sm:block" />
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold italic text-white text-center tracking-wider uppercase">
-              <span className="text-[#C9A227]">Encuentra el lubricante</span> adecuado par tu vehículo
+              <span className="text-[#C9A227]">Encuentra el lubricante</span>{" "}
+              adecuado par tu vehículo
             </h2>
             <div className="w-16 h-[2px] bg-gradient-to-l from-transparent to-[#C9A227] hidden sm:block" />
           </div>
@@ -168,7 +169,9 @@ export function Hero() {
             <div
               className={`absolute inset-0 flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12 ${category.position === "right" ? "items-end" : "items-start"}`}
             >
-              <div className={`flex items-center gap-2 md:gap-3 ${category.position === "left" ? "flex-row-reverse" : ""}`}>
+              <div
+                className={`flex items-center gap-2 md:gap-3 ${category.position === "left" ? "flex-row-reverse" : ""}`}
+              >
                 <div className="w-6 md:w-8 h-[2px] bg-primary" />
                 <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white tracking-wide text-center sm:text-left">
                   {category.title}
@@ -188,13 +191,17 @@ export function Hero() {
           </Link>
         ))}
       </div>
-      {/* "Lo mas vendido" */}
-      <div className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
-        {/* Efecto de brillo */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.1),transparent_50%)]" />
 
-        {/* Hexágonos fondo */}
-        <div className="pointer-events-none absolute inset-0 opacity-10">
+      {/* LO MÁS VENDIDO */}
+      <div className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-b from-[#141414] via-[#0e0e0e] to-[#080808] overflow-hidden border-b border-[#C9A227]/20">
+        {/* Glow dorado superior */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.18),transparent_55%)]" />
+
+        {/* Ruido / textura */}
+        <div className="absolute inset-0 bg-[url('/images/textures/noise.png')] opacity-[0.07] mix-blend-overlay" />
+
+        {/* Patrón hexagonal sutil */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
           <svg
             viewBox="0 0 100 100"
             preserveAspectRatio="xMidYMid slice"
@@ -210,136 +217,162 @@ export function Hero() {
                 points="6,0 12,3 12,9 6,12 0,9 0,3"
                 fill="none"
                 stroke="#C9A227"
-                strokeWidth="0.5"
+                strokeWidth="0.4"
               />
             </pattern>
             <rect width="100%" height="100%" fill="url(#hexagons-sold)" />
           </svg>
         </div>
 
-        {/* Contenido */}
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        {/* Título */}
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center space-y-3">
           <div className="flex items-center justify-center gap-4">
-            <div className="w-16 h-[2px] bg-gradient-to-r from-transparent to-[#C9A227] hidden sm:block" />
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold italic text-white text-center tracking-wider uppercase">
-              <span className="text-[#C9A227]">Lo más</span> Vendido
+            <div className="w-20 h-[2px] bg-gradient-to-r from-transparent to-[#C9A227]" />
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold italic tracking-wider uppercase">
+              <span className="text-[#C9A227] drop-shadow-[0_0_12px_rgba(201,162,39,0.7)]">
+                Lo más
+              </span>{" "}
+              <span className="text-white">Vendido</span>
             </h2>
-            <div className="w-16 h-[2px] bg-gradient-to-l from-transparent to-[#C9A227] hidden sm:block" />
+            <div className="w-20 h-[2px] bg-gradient-to-l from-transparent to-[#C9A227]" />
           </div>
-          <p className="text-center text-gray-400 mt-3 text-sm md:text-base">
-            Los productos favoritos de nuestros clientes
+
+          <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+            Los productos favoritos de nuestros clientes, diseñados para máximo
+            rendimiento.
           </p>
         </div>
       </div>
 
       {/* Carrusel 3D - Lo más Popular */}
-      <div className="relative py-16 md:py-20 lg:py-24 overflow-hidden">
-        {/* Fondo con patrón de rejilla */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,1px) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
-        
-        {/* Brillo superior */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C9A227]/5 via-transparent to-transparent pointer-events-none" />
-        
-        {/* Borde superior dorado */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-50" />
-        
-        {/* Borde inferior dorado */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-30" />
-        
-        <div className="relative z-10">
-          <Carousel3D
-          items={[
-            {
-              content: (
-                <Image
-                  src="/images/inicio/masvendido/calciorojo.png"
-                  alt="Producto 1"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "255, 193, 7",
-            },
-            {
-              content: (
-                <Image
-                  src="/images/inicio/masvendido/litioazul.png"
-                  alt="Producto 2"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "255, 193, 7",
-            },
+      <div
+        className="relative py-20 md:py-24 lg:py-28 overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/hero/fondo1.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Oscurecer fondo */}
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
 
-            {
-              content: (
-                <Image
-                  src="/images/products/APL-GAS-540.png"
-                  alt="Producto 5"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "255, 152, 0",
-            },
-            {
-              content: (
-                <Image
-                  src="/images/products/APL-GAS-540.png"
-                  alt="Producto 3"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "76, 175, 80",
-            },
-            {
-              content: (
-                <Image
-                  src="/images/products/APL-GAS-540.png"
-                  alt="Producto 6"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "33, 150, 243",
-            },
-            {
-              content: (
-                <Image
-                  src="/images/products/APL-GAS-540.png"
-                  alt="Producto 7"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "156, 39, 176",
-            },
-          ]}
+        {/* Patrón de puntos */}
+        <div className="absolute inset-0 opacity-[0.05]">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(255,255,255,1) 1px, transparent 0)",
+              backgroundSize: "36px 36px",
+            }}
           />
+        </div>
+
+        {/* Glow central */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,162,39,0.18),transparent_60%)]" />
+
+        {/* Bordes */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-70" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-40" />
+
+        {/* Contenido */}
+        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14">
+          {/* Logos en móvil */}
+          <div className="flex lg:hidden gap-20 mb-4">
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo 1"
+              width={90}
+              height={90}
+              className="object-contain opacity-80"
+            />
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo 2"
+              width={90}
+              height={90}
+              className="object-contain opacity-80"
+            />
+          </div>
+
+          {/* Logo Izquierdo */}
+          <div className="hidden lg:block w-40 xl:w-48 opacity-80 hover:opacity-100 transition">
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo izquierdo"
+              width={200}
+              height={200}
+              className="object-contain drop-shadow-[0_0_14px_rgba(201,162,39,0.45)]"
+            />
+          </div>
+
+          {/* Carrusel */}
+          <div
+            className=" relative
+                w-[92vw] sm:w-[360px] md:w-[520px] lg:w-[700px] xl:w-[820px]
+                max-w-[820px]
+                h-[300px] sm:h-[360px] md:h-[420px] lg:h-[480px]
+                px-2 sm:px-6 lg:px-14
+                flex-shrink-0"
+          >
+            <Carousel3D
+              items={[
+                {
+                  content: (
+                    <Image
+                      src="/images/inicio/masvendido/calciorojo.png"
+                      alt="Producto 1"
+                      fill
+                      className="object-contain"
+                    />
+                  ),
+                  color: "255,193,7",
+                },
+                {
+                  content: (
+                    <Image
+                      src="/images/inicio/masvendido/litioazul.png"
+                      alt="Producto 2"
+                      fill
+                      className="object-contain"
+                    />
+                  ),
+                  color: "255,193,7",
+                },
+              ]}
+            />
+          </div>
+
+          {/* Logo Derecho */}
+          <div className="hidden lg:block w-40 xl:w-48 opacity-80 hover:opacity-100 transition">
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo derecho"
+              width={200}
+              height={200}
+              className="object-contain drop-shadow-[0_0_14px_rgba(201,162,39,0.45)]"
+            />
+          </div>
         </div>
       </div>
 
       {/* "Lo mas popular" */}
-      <div className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
-        {/* Efecto de brillo */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.1),transparent_50%)]" />
+      <div className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-b from-[#141414] via-[#0e0e0e] to-[#080808] overflow-hidden border-b border-[#C9A227]/20">
+        {/* Glow dorado superior */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.18),transparent_55%)]" />
 
-        {/* Hexágonos fondo */}
-        <div className="pointer-events-none absolute inset-0 opacity-10">
+        {/* Ruido / textura */}
+        <div className="absolute inset-0 bg-[url('/images/textures/noise.png')] opacity-[0.07] mix-blend-overlay" />
+
+        {/* Patrón hexagonal sutil */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
           <svg
             viewBox="0 0 100 100"
             preserveAspectRatio="xMidYMid slice"
             className="w-full h-full"
           >
             <pattern
-              id="hexagons-popular"
+              id="hexagons-sold"
               width="12"
               height="12"
               patternUnits="userSpaceOnUse"
@@ -348,108 +381,176 @@ export function Hero() {
                 points="6,0 12,3 12,9 6,12 0,9 0,3"
                 fill="none"
                 stroke="#C9A227"
-                strokeWidth="0.5"
+                strokeWidth="0.4"
               />
             </pattern>
-            <rect width="100%" height="100%" fill="url(#hexagons-popular)" />
+            <rect width="100%" height="100%" fill="url(#hexagons-sold)" />
           </svg>
         </div>
 
-        {/* Contenido */}
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        {/* Título */}
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center space-y-3">
           <div className="flex items-center justify-center gap-4">
-            <div className="w-16 h-[2px] bg-gradient-to-r from-transparent to-[#C9A227] hidden sm:block" />
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold italic text-white text-center tracking-wider uppercase">
-              <span className="text-[#C9A227]">Lo más</span> Popular
+            <div className="w-20 h-[2px] bg-gradient-to-r from-transparent to-[#C9A227]" />
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold italic tracking-wider uppercase">
+              <span className="text-[#C9A227] drop-shadow-[0_0_12px_rgba(201,162,39,0.7)]">
+                Lo más
+              </span>{" "}
+              <span className="text-white">Popular</span>
             </h2>
-            <div className="w-16 h-[2px] bg-gradient-to-l from-transparent to-[#C9A227] hidden sm:block" />
+            <div className="w-20 h-[2px] bg-gradient-to-l from-transparent to-[#C9A227]" />
           </div>
-          <p className="text-center text-gray-400 mt-3 text-sm md:text-base">
+
+          <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
             Las elecciones tops de esta temporada
           </p>
         </div>
       </div>
 
       {/* Carrusel 3D - Lo más Popular */}
-      <div className="relative bg-[#0d0d0d] py-16 md:py-20 lg:py-24 overflow-hidden">
-        {/* Fondo con patrón de rejilla */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,1px) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
-        
-        {/* Brillo superior */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C9A227]/5 via-transparent to-transparent pointer-events-none" />
-        
-        {/* Borde superior dorado */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-50" />
-        
-        {/* Borde inferior dorado */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-30" />
-        
-        <div className="relative z-10">
-          <Carousel3D
-          items={[
-            {
-              content: (
-                <Image
-                  src="/images/inicio/maspopulares/chicle.png"
-                  alt="Producto 1"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "255, 193, 7",
-            },
-            {
-              content: (
-                <Image
-                  src="/images/inicio/maspopulares/dolcegabbana.png"
-                  alt="Producto 2"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "255, 152, 0",
-            },
-            {
-              content: (
-                <Image
-                  src="/images/inicio/maspopulares/fresa.png"
-                  alt="Producto 3"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "76, 175, 80",
-            },
-            {
-              content: (
-                <Image
-                  src="/images/inicio/maspopulares/newcar.png"
-                  alt="Producto 4"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "33, 150, 243",
-            },
-           
-          ]}
+      <div
+        className="relative py-20 md:py-24 lg:py-28 overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/hero/fondo1.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Oscurecer fondo */}
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+
+        {/* Patrón de puntos */}
+        <div className="absolute inset-0 opacity-[0.05]">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(255,255,255,1) 1px, transparent 0)",
+              backgroundSize: "36px 36px",
+            }}
           />
+        </div>
+
+        {/* Glow central */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,162,39,0.18),transparent_60%)]" />
+
+        {/* Bordes */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-70" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-40" />
+
+        {/* Contenido */}
+        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14">
+          {/* Logos en móvil */}
+          <div className="flex lg:hidden gap-20 mb-4">
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo 1"
+              width={90}
+              height={90}
+              className="object-contain opacity-80"
+            />
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo 2"
+              width={90}
+              height={90}
+              className="object-contain opacity-80"
+            />
+          </div>
+
+          {/* Logo Izquierdo */}
+          <div className="hidden lg:block w-40 xl:w-48 opacity-80 hover:opacity-100 transition">
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo izquierdo"
+              width={200}
+              height={200}
+              className="object-contain drop-shadow-[0_0_14px_rgba(201,162,39,0.45)]"
+            />
+          </div>
+
+          {/* Carrusel */}
+          <div
+            className=" relative
+                w-[92vw] sm:w-[360px] md:w-[520px] lg:w-[700px] xl:w-[820px]
+                max-w-[820px]
+                h-[300px] sm:h-[360px] md:h-[420px] lg:h-[480px]
+                px-2 sm:px-6 lg:px-14
+                flex-shrink-0"
+          >
+            <Carousel3D
+              items={[
+                {
+                  content: (
+                    <Image
+                      src="/images/inicio/maspopulares/chicle.png"
+                      alt="Producto 1"
+                      fill
+                      className="object-contain"
+                    />
+                  ),
+                  color: "255, 193, 7",
+                },
+                {
+                  content: (
+                    <Image
+                      src="/images/inicio/maspopulares/dolcegabbana.png"
+                      alt="Producto 2"
+                      fill
+                      className="object-contain"
+                    />
+                  ),
+                  color: "255, 152, 0",
+                },
+                {
+                  content: (
+                    <Image
+                      src="/images/inicio/maspopulares/fresa.png"
+                      alt="Producto 3"
+                      fill
+                      className="object-contain"
+                    />
+                  ),
+                  color: "76, 175, 80",
+                },
+                {
+                  content: (
+                    <Image
+                      src="/images/inicio/maspopulares/newcar.png"
+                      alt="Producto 4"
+                      fill
+                      className="object-contain"
+                    />
+                  ),
+                  color: "33, 150, 243",
+                },
+              ]}
+            />
+          </div>
+
+          {/* Logo Derecho */}
+          <div className="hidden lg:block w-40 xl:w-48 opacity-80 hover:opacity-100 transition">
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo derecho"
+              width={200}
+              height={200}
+              className="object-contain drop-shadow-[0_0_14px_rgba(201,162,39,0.45)]"
+            />
+          </div>
         </div>
       </div>
 
+{/* "Terecomendamos" */}
+      <div className="relative py-16 md:py-20 lg:py-24 bg-gradient-to-b from-[#141414] via-[#0e0e0e] to-[#080808] overflow-hidden border-b border-[#C9A227]/20">
+        {/* Glow dorado superior */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.18),transparent_55%)]" />
 
-      {/* "Terecomendamos" */}
-      <div className="relative py-12 md:py-16 lg:py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
-        {/* Efecto de brillo */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.1),transparent_50%)]" />
+        {/* Ruido / textura */}
+        <div className="absolute inset-0 bg-[url('/images/textures/noise.png')] opacity-[0.07] mix-blend-overlay" />
 
-        {/* Hexágonos fondo */}
-        <div className="pointer-events-none absolute inset-0 opacity-10">
+        {/* Patrón hexagonal sutil */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.07]">
           <svg
             viewBox="0 0 100 100"
             preserveAspectRatio="xMidYMid slice"
@@ -465,90 +566,161 @@ export function Hero() {
                 points="6,0 12,3 12,9 6,12 0,9 0,3"
                 fill="none"
                 stroke="#C9A227"
-                strokeWidth="0.5"
+                strokeWidth="0.4"
               />
             </pattern>
             <rect width="100%" height="100%" fill="url(#hexagons-sold)" />
           </svg>
         </div>
 
-        {/* Contenido */}
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        {/* Título */}
+        <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center space-y-3">
           <div className="flex items-center justify-center gap-4">
-            <div className="w-16 h-[2px] bg-gradient-to-r from-transparent to-[#C9A227] hidden sm:block" />
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold italic text-white text-center tracking-wider uppercase">
-              <span className="text-[#C9A227]">Te</span> Recomendamos
+            <div className="w-20 h-[2px] bg-gradient-to-r from-transparent to-[#C9A227]" />
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold italic tracking-wider uppercase">
+              <span className="text-[#C9A227] drop-shadow-[0_0_12px_rgba(201,162,39,0.7)]">
+                Te
+              </span>{" "}
+              <span className="text-white">Recomendamos</span>
             </h2>
-            <div className="w-16 h-[2px] bg-gradient-to-l from-transparent to-[#C9A227] hidden sm:block" />
+            <div className="w-20 h-[2px] bg-gradient-to-l from-transparent to-[#C9A227]" />
           </div>
-          <p className="text-center text-gray-400 mt-3 text-sm md:text-base">
-            Selección especial para ti 
+
+          <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto">
+            Selección especial para ti
           </p>
         </div>
       </div>
 
-      {/* Carrusel 3D - Te Recomendamos */}
-      <div className="relative bg-[#0d0d0d] py-16 md:py-20 lg:py-24 overflow-hidden">
-        {/* Fondo con patrón de rejilla */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,1px) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
-        
-        {/* Brillo superior */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#C9A227]/5 via-transparent to-transparent pointer-events-none" />
-        
-        {/* Borde superior dorado */}
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-50" />
-        
-        {/* Borde inferior dorado */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-30" />
-        
-        <div className="relative z-10">
-          <Carousel3D
-          items={[
-            {
-              content: (
-                <Image
-                  src="/images/inicio/recomendado/15w40.png"
-                  alt="Producto 1"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "255, 193, 7",
-            },
-            {
-              content: (
-                <Image
-                  src="/images/inicio/recomendado/hidraulico68.png"
-                  alt="Producto 2"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "255, 152, 0",
-            },
-            {
-              content: (
-                <Image
-                  src="/images/inicio/recomendado/Sae25w60.png"
-                  alt="Producto 3"
-                  fill
-                  className="object-contain"
-                />
-              ),
-              color: "76, 175, 80",
-            },
-          ]}
+      
+      {/* Carrusel 3D - Lo más Popular */}
+      <div
+        className="relative py-20 md:py-24 lg:py-28 overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/hero/fondo1.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Oscurecer fondo */}
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+
+        {/* Patrón de puntos */}
+        <div className="absolute inset-0 opacity-[0.05]">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle at 1px 1px, rgba(255,255,255,1) 1px, transparent 0)",
+              backgroundSize: "36px 36px",
+            }}
           />
+        </div>
+
+        {/* Glow central */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(201,162,39,0.18),transparent_60%)]" />
+
+        {/* Bordes */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-70" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227] to-transparent opacity-40" />
+
+        {/* Contenido */}
+        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14">
+          {/* Logos en móvil */}
+          <div className="flex lg:hidden gap-20 mb-4">
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo 1"
+              width={90}
+              height={90}
+              className="object-contain opacity-80"
+            />
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo 2"
+              width={90}
+              height={90}
+              className="object-contain opacity-80"
+            />
+          </div>
+
+          {/* Logo Izquierdo */}
+          <div className="hidden lg:block w-40 xl:w-48 opacity-80 hover:opacity-100 transition">
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo izquierdo"
+              width={200}
+              height={200}
+              className="object-contain drop-shadow-[0_0_14px_rgba(201,162,39,0.45)]"
+            />
+          </div>
+
+          {/* Carrusel */}
+          <div
+            className=" relative
+                w-[92vw] sm:w-[360px] md:w-[520px] lg:w-[700px] xl:w-[820px]
+                max-w-[820px]
+                h-[300px] sm:h-[360px] md:h-[420px] lg:h-[480px]
+                px-2 sm:px-6 lg:px-14
+                flex-shrink-0"
+          >
+            <Carousel3D
+            items={[
+              {
+                content: (
+                  <Image
+                    src="/images/inicio/recomendado/15w40.png"
+                    alt="Producto 1"
+                    fill
+                    className="object-contain"
+                  />
+                ),
+                color: "255, 193, 7",
+              },
+              {
+                content: (
+                  <Image
+                    src="/images/inicio/recomendado/hidraulico68.png"
+                    alt="Producto 2"
+                    fill
+                    className="object-contain"
+                  />
+                ),
+                color: "255, 152, 0",
+              },
+              {
+                content: (
+                  <Image
+                    src="/images/inicio/recomendado/Sae25w60.png"
+                    alt="Producto 3"
+                    fill
+                    className="object-contain"
+                  />
+                ),
+                color: "76, 175, 80",
+              },
+            ]}
+          />
+          </div>
+
+          {/* Logo Derecho */}
+          <div className="hidden lg:block w-40 xl:w-48 opacity-80 hover:opacity-100 transition">
+            <Image
+              src="/images/logoApolo.png" // CAMBIA
+              alt="Logo derecho"
+              width={200}
+              height={200}
+              className="object-contain drop-shadow-[0_0_14px_rgba(201,162,39,0.45)]"
+            />
+          </div>
         </div>
       </div>
 
+
+      
+
       {/* "Nuestros Clientes" */}
-     
+
       <div className="relative py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
         {/* Efecto de brillo */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.1),transparent_50%)]" />
@@ -627,7 +799,7 @@ export function Hero() {
       />
 
       {/* "Lo que dicen en Google" */}
-      
+
       <div className="relative py-20 bg-gradient-to-b from-[#1a1a1a] to-[#0d0d0d] overflow-hidden border-b border-[#C9A227]/20">
         {/* Efecto de brillo */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(201,162,39,0.1),transparent_50%)]" />
@@ -666,7 +838,7 @@ export function Hero() {
             <div className="w-16 h-[2px] bg-gradient-to-l from-transparent to-[#C9A227] hidden sm:block" />
           </div>
           <p className="text-center text-gray-400 mt-3 text-sm md:text-base">
-             Reseñas de clientes satisfechos
+            Reseñas de clientes satisfechos
           </p>
         </div>
       </div>
@@ -678,31 +850,36 @@ export function Hero() {
             name: "Carlos Rodríguez",
             rating: 5,
             text: "Excelente atención y productos de primera calidad. El aceite que me recomendaron mejoró significativamente el rendimiento de mi moto.",
-            image: "https://ui-avatars.com/api/?name=Carlos+Rodriguez&background=C9A227&color=fff",
+            image:
+              "https://ui-avatars.com/api/?name=Carlos+Rodriguez&background=C9A227&color=fff",
           },
           {
             name: "María González",
             rating: 5,
             text: "Los mejores lubricantes de la zona. Personal muy capacitado y precios justos. Totalmente recomendada.",
-            image: "https://ui-avatars.com/api/?name=Maria+Gonzalez&background=C9A227&color=fff",
+            image:
+              "https://ui-avatars.com/api/?name=Maria+Gonzalez&background=C9A227&color=fff",
           },
           {
             name: "Pedro Martínez",
             rating: 5,
             text: "Desde que uso los productos de Apolo Lubricantes, mi motor funciona como nuevo. Servicio profesional y rapido.",
-            image: "https://ui-avatars.com/api/?name=Pedro+Martinez&background=C9A227&color=fff",
+            image:
+              "https://ui-avatars.com/api/?name=Pedro+Martinez&background=C9A227&color=fff",
           },
           {
             name: "Ana López",
             rating: 5,
             text: "Gran variedad de productos para todo tipo de vehículos. El atendimento es excepcional y muy profesionales.",
-            image: "https://ui-avatars.com/api/?name=Ana+Lopez&background=C9A227&color=fff",
+            image:
+              "https://ui-avatars.com/api/?name=Ana+Lopez&background=C9A227&color=fff",
           },
           {
             name: "Roberto Sánchez",
             rating: 5,
             text: "Excelente local con productos de primera. Me han atendido siempre con rapides y eficiencia. Muy satisfecho.",
-            image: "https://ui-avatars.com/api/?name=Roberto+Sanchez&background=C9A227&color=fff",
+            image:
+              "https://ui-avatars.com/api/?name=Roberto+Sanchez&background=C9A227&color=fff",
           },
         ]}
       />
